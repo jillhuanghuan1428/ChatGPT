@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: borrowed-moon
+    runtime: node
+    region: singapore
+    plan: 0.5c-512mb
+    numInstances: 1
+    buildCommand: node build.mjs
+    startCommand: node serve.mjs
+    healthCheckPath: /healthz
+    autoDeployTrigger: 'off'
+    envVars:
+      - key: NODE_VERSION
+        value: '24.22.1'
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DB_PATH
+        value: /var/data/borrowed-moon.sqlite
+    disk:
+      name: borrowed-moon-scores
+      mountPath: /var/data
+      sizeGB: 1

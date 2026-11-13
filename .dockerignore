@@ -1,0 +1,13 @@
+**
+!Dockerfile
+!package.json
+!build.mjs
+!serve.mjs
+!.openai/
+!.openai/hosting.json
+!worker/
+!worker/**
+!migrations/
+!migrations/*.sql
+!drizzle/
+!drizzle/**

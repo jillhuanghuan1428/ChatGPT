@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101325">
+<title>借月改轨 · Borrowed Moon: Light Across Time</title>
+<style>
+:root{--ink:#171b34;--bg:#0d1128;--gold:#e6b081;--paper:#ece8f7;--dim:#b8b5d2;--red:#bd705d;--line:#c1bcd033;--jade:#595183;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 5%,#292a56,var(--bg) 60%);color:var(--paper);font:15px/1.65 "Segoe UI","Microsoft YaHei",sans-serif;min-height:100vh}h1,h2,h3,p{margin:0}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.44;cursor:default}button:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--gold);outline-offset:4px}button:not(:disabled):hover{filter:brightness(1.1)}[hidden]{display:none!important}.serif{font-family:Georgia,"Songti SC",SimSun,serif;font-weight:400}.kicker{color:var(--gold);font-size:11px;letter-spacing:.18em}.muted{color:var(--dim)}.shell{max-width:1250px;margin:auto;padding:0 30px}.header{height:76px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:11px;background:none;border:0;color:var(--paper);text-align:left;padding:0}.seal{display:grid;place-items:center;background:#a34c3b;border:3px double #e7b295;color:#f8e5ca;width:36px;height:39px;flex:none;font:24px Georgia,SimSun,serif}.brand strong{display:block;letter-spacing:.09em;font-size:13px}.brand small{font-size:10px;color:var(--dim)}.actions{display:flex;gap:8px;flex-wrap:wrap}.button{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid transparent;border-radius:4px;background:var(--gold);color:#22253e;padding:10px 17px;font-weight:600;min-height:44px}.ghost{background:#0f232450;border-color:var(--line);color:var(--paper);font-weight:400}.small{font-size:12px;padding:7px 12px;min-height:39px}.text-btn{background:none;border:0;color:var(--gold);text-decoration:underline;text-underline-offset:5px;padding:5px 0}.home{min-height:calc(100svh - 126px);display:grid;grid-template-columns:1fr 1.16fr;gap:36px;align-items:center;padding-top:24px;padding-bottom:42px}.home h1{font-size:clamp(46px,6vw,84px);line-height:1.08;margin:16px 0}.home .sub{font:26px/1.3 Georgia,SimSun,serif;color:var(--gold);margin:12px 0 22px}.home .intro{max-width:460px;color:#cfcade;font-size:16px;margin-bottom:26px}.home .meta{color:var(--dim);font-size:12px;margin-top:16px}.home-art{position:relative;aspect-ratio:1;max-width:560px;justify-self:end;width:100%}.home-art canvas{width:100%;height:100%;display:block}.home-art small{position:absolute;right:0;bottom:7%;writing-mode:vertical-rl;letter-spacing:.28em;color:#cab98f}.chapter{padding-top:12px;padding-bottom:34px}.chapter-top{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:17px}.chapter-top h1{font-size:32px;line-height:1.25;margin-top:4px}.count{font-size:13px;color:#d9c494;white-space:nowrap}.play-grid{display:grid;grid-template-columns:minmax(0,1fr) 288px;gap:20px;align-items:start}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}.time{border:1px solid var(--line);background:#1b1e37a0;color:#e5ddc7;border-radius:4px;min-height:54px;padding:6px 5px;line-height:1.3}.time strong{font:19px Georgia,serif;display:block;letter-spacing:.04em}.time small{font-size:11px;color:var(--dim)}.time[aria-pressed=true]{background:#e5c285;color:#252841;border-color:#e5c285}.time[aria-pressed=true] small{color:#3e415a}.frame{position:relative;overflow:hidden;border:1px solid #b9b4c849;border-radius:5px;background:#161932;box-shadow:0 16px 45px #0f122b55}.scene{display:block;width:100%;aspect-ratio:3/2;touch-action:none;cursor:grab}.scene:active{cursor:grabbing}.frame-note{pointer-events:none;position:absolute;left:11px;bottom:10px;color:#eee8d4;background:#21243ddc;border:1px solid #d6ba7c46;border-radius:4px;padding:5px 9px;font-size:11px}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;padding:14px 0 0}.control{display:grid;gap:4px;color:var(--dim);font-size:12px}.control input{accent-color:var(--gold);width:100%;margin:0;height:26px}.sides{display:flex;justify-content:space-between;gap:5px;font-size:10px}.paper{color:#353851;background:var(--paper);border-radius:5px;border-top:3px solid var(--red);padding:20px}.paper .kicker{color:#856633;letter-spacing:.12em}.paper h2{font-size:24px;line-height:1.3;margin:7px 0 10px}.paper p{font-size:13px;line-height:1.65;color:#585b74}.paper .button{width:100%;background:var(--jade);color:#f4ecda;font-size:13px;margin-top:13px}.paper .text-btn{color:#68562f;font-size:12px;margin-top:8px}.status{min-height:36px;margin-top:10px;font-size:12px!important}.note-list{list-style:none;padding:13px 0 0;margin:13px 0 0;border-top:1px solid #8c879b55}.note-list li{display:grid;grid-template-columns:41px 1fr;gap:8px;font-size:12px;line-height:1.5;padding:9px 0;border-bottom:1px solid #8c879b32}.note-list time{font-weight:600;color:#826839}.note-list .empty{color:#70738c}.evidence-detail{margin-top:10px;padding:11px;background:#e0dbef;border-radius:3px}.dossier{margin-top:28px;background:#171b35;border:1px solid var(--line);border-radius:5px;padding:21px}.dossier h2{font-size:26px;margin:3px 0 8px}.dossier>p{font-size:13px;margin-bottom:12px}.footer{color:#b1acc0;padding:15px 30px 24px;font-size:11px;max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:12px}.modal{width:min(540px,calc(100% - 24px));max-height:calc(100svh - 24px);background:var(--paper);color:var(--ink);border:0;padding:27px;border-radius:6px;box-shadow:0 25px 95px #0007}.modal::backdrop{background:#0f122bbb;backdrop-filter:blur(4px)}.modal h2{font-size:28px;line-height:1.3;margin:8px 0 12px}.modal p,.modal li{font-size:14px;color:#4d5069;margin:8px 0}.modal .button{margin-top:14px;background:var(--jade);color:var(--paper)}.modal .kicker{color:#886938}.modal ol{padding-left:22px}.modal .actions .ghost{background:transparent;color:var(--ink);border-color:#9590a4}.loading{color:var(--gold);padding:36px 0}.finished-seal{display:inline-block;border:2px solid var(--red);color:var(--red);padding:4px 10px;transform:rotate(-3deg);margin:8px 0;font-weight:700}
+@media(max-width:850px){.shell{padding:0 20px}.play-grid{grid-template-columns:minmax(0,1fr) 237px;gap:13px}.paper{padding:15px}.home{gap:21px}.home .intro{font-size:14px}}
+@media(max-width:650px){.shell{padding:0 14px}.header{height:66px}.home{display:flex;flex-direction:column-reverse;justify-content:center;gap:8px;text-align:center;padding-top:9px;padding-bottom:25px}.home-art{max-width:360px}.home h1{font-size:49px}.home .sub{font-size:20px;margin:10px 0 14px}.home .intro{margin:0 auto 17px}.chapter-top{margin-bottom:12px;gap:7px;align-items:center}.chapter-top h1{font-size:22px}.count{font-size:11px}.play-grid{grid-template-columns:1fr}.chapter{padding-bottom:15px}.controls{padding-top:10px}.paper{padding:16px}.paper h2{font-size:22px}.note-list li{padding:6px 0}.dossier{margin-top:17px;padding:13px}.footer{padding:15px 15px 20px}.footer span:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+.room-lobby, .room-bar {
+ border: 1px solid var(--line);
+ border-radius: 5px;
+ background: #23263f;
+ padding: 16px;
+ margin-top: 16px;
+}
+.room-lobby h2 { font-size: 23px; margin-bottom: 4px; }
+.room-lobby .muted, .room-bar .muted { font-size: 13px; }
+.room-fields, .room-invite { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.room-fields { margin: 13px 0; }
+.room-lobby label, .room-invite label {
+ display: grid;
+ gap: 5px;
+ font-size: 12px;
+ color: var(--dim);
+}
+.room-fields label, .room-invite label { flex: 1 1 135px; min-width: 0; }
+.room-lobby input, .room-invite input {
+ background: #1b1e37;
+ color: var(--paper);
+ border: 1px solid #c4bfd362;
+ border-radius: 4px;
+ width: 100%;
+ min-height: 38px;
+ padding: 7px 10px;
+ font: inherit;
+}
+.room-code { letter-spacing: .14em; font-variant-numeric: tabular-nums; }
+.room-bar { margin: 0 0 17px; }
+.room-bar-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: center; }
+.room-bar h2 { font-size: 17px; }
+.room-state { font-size: 12px; color: #c9c4d8; margin-top: 5px; }
+.room-state[data-offline], .room-error { color: #f2bd9f; }
+.room-error, .room-notice { font-size: 12px; margin-top: 8px; }
+.room-notice { color: #ecd1a3; }
+.room-roster { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 9px 0 12px; list-style: none; }
+.room-roster li { background: #d4cfe319; color: var(--paper); padding: 3px 8px; border-radius: 4px; font-size: 12px; overflow-wrap: anywhere; max-width: 100%; }
+.room-roster .player-tag { color: var(--gold); margin-inline-start: 5px; font-size: 10px; }
+.room-invite label { max-width: 455px; }
+.view-controls{display:flex;align-items:center;gap:14px;padding-top:12px;font-size:11px;color:var(--dim)}.view-controls label{display:flex;align-items:center;gap:9px;flex:1;max-width:380px}.view-controls input{min-width:80px;flex:1;accent-color:var(--gold)}
+.inspector{border:1px solid #b9b0dd38;border-radius:5px;background:linear-gradient(155deg,#2c2b4e,#1b203b);padding:18px;min-width:0}.lens-card{display:flex;gap:13px;align-items:center;padding-bottom:15px;border-bottom:1px solid var(--line);margin-bottom:15px}.lens-token{flex:none;width:67px;height:67px;border:3px double #dfbb96;border-radius:50%;display:grid;place-items:center;background:#10172f;box-shadow:inset 0 0 20px #9983ce33;color:var(--dim);font-size:33px;line-height:1}.lens-card h2{font-size:12px;color:var(--dim);font-weight:400}.lens-card p{font-size:13px;margin-top:3px}.device-title{font-size:25px;line-height:1.35;margin:6px 0 9px}.device-description{color:#cac4dc;font-size:13px;margin-bottom:14px}.device-actions{display:grid;gap:8px}.source-button,.socket-button{width:100%;border:1px solid #bcb0e447;border-radius:4px;min-height:45px;padding:8px 10px;color:var(--paper);background:#121931a3;text-align:left}.source-button{display:grid;grid-template-columns:33px 1fr;gap:0 9px;align-items:center}.source-glyph{grid-row:span 2;font-size:26px;text-align:center}.source-button small{color:var(--dim);font-size:10px}.source-moon{color:#8cd6ff}.source-sun{color:#ffc677}.source-star{color:#b8a0ee}.rule{font-size:11px;line-height:1.7;color:#beb5d2;margin-top:11px}.mirror-readout{display:flex;align-items:center;gap:12px;padding:10px 0;margin-bottom:7px}.mirror-symbol{display:grid;place-items:center;border:1px solid #aaa1d888;border-radius:50%;width:53px;height:53px;flex:none;font:34px monospace;color:#e9dcff}.mirror-readout p{font-size:12px;color:var(--dim)}.socket-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.socket-button{display:grid;gap:2px;font-size:12px;padding:8px}.socket-button small{color:var(--dim);font-size:10px}.socket-button[data-filled]{border-color:#aa9bd8a3;background:#61508a3c}.hint-area{border-top:1px solid var(--line);margin-top:16px;padding-top:11px}.hint-text{font-size:12px;color:#dfcdb1;margin-top:6px}.action-notice{min-height:20px;color:#edc6a2;font-size:12px;margin-top:9px}
+.control-deck{border:1px solid var(--line);border-radius:5px;margin-top:22px;padding:20px;background:#161c35}.control-deck h2{font-size:24px;margin:4px 0 10px}.control-deck-top{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.pulse-field{border:0;padding:0;margin:0}.pulse-field legend{font-size:12px;color:var(--dim);margin-bottom:7px}.pulse-buttons{display:flex;gap:7px}.pulse{border:1px solid #aa9cd16b;border-radius:4px;background:#10172e;color:var(--paper);padding:8px 15px;min-height:40px;font-variant-numeric:tabular-nums}.pulse[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#22263a}.run-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.replay-clock{color:var(--gold);font:20px Georgia,serif;font-variant-numeric:tabular-nums;min-width:58px}.replay-line{margin:16px 0 11px}.replay-line input{width:100%;margin:0;accent-color:#b8a0ee}.time-ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);font-variant-numeric:tabular-nums}.replay-events{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.replay-events li{min-height:61px;padding:8px 11px;border:1px solid #b0a1da2f;border-radius:4px;font-size:12px;background:#10162d99;color:#d0c6e0}.replay-events time{display:block;color:var(--gold);font-size:10px;margin-bottom:2px}.replay-events li[data-future]{opacity:.3}.replay-summary{min-height:22px;margin-top:11px;font-size:13px;color:#e8cba7}
+@media(max-width:740px){.inspector{padding:16px}.lens-card{padding-bottom:12px;margin-bottom:12px}.lens-token{width:58px;height:58px}.device-actions.sources{grid-template-columns:repeat(3,minmax(0,1fr))}.source-button{display:flex;flex-direction:column;gap:0;padding:7px 4px;text-align:center;font-size:12px}.source-button small{font-size:9px}.source-glyph{font-size:23px}.socket-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.socket-button{padding:8px 5px;min-width:0;font-size:11px}.socket-button small{font-size:9px}.control-deck{padding:15px;margin-top:17px}.control-deck-top{gap:16px}.control-deck h2{font-size:23px}.replay-events{grid-template-columns:1fr;gap:6px}.replay-events li{min-height:0}.replay-events time{display:inline;margin-right:8px}.count{white-space:normal;text-align:right;font-size:10px;max-width:130px}}
+.campaign-bar { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 7px; margin: 0 0 11px; }
+.level-button { display: flex; align-items: center; gap: 7px; min-width: 0; min-height: 43px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 4px; background: #171c35; color: var(--paper); text-align: left; font-size: 11px; }
+.level-button b { font: 19px Georgia,serif; color: var(--gold); }
+.level-button[aria-current="step"] { background: #51466e88; border-color: #c5abe8; }
+.level-button span { overflow-wrap: anywhere; }
+.level-briefing { border-left: 3px solid var(--gold); padding: 4px 0 6px 13px; margin: 0 0 14px; }
+.level-briefing h2 { font-size: 22px; line-height: 1.4; }
+.level-briefing p { color: var(--dim); font-size: 12px; margin-top: 3px; }
+.campaign-tools { display: flex; flex-wrap: wrap; gap: 7px 14px; align-items: center; margin-bottom: 12px; }
+.layout-code { color: var(--dim); font-size: 11px; overflow-wrap: anywhere; }
+.campaign-home { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.epoch-panel { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; padding: 9px 0; margin-bottom: 9px; }
+.epoch-panel strong { font-size: 12px; font-weight: 400; color: var(--dim); width: 100%; }
+.epoch-button { border: 1px solid #a497c377; border-radius: 4px; background: #171e3b; color: var(--paper); padding: 7px 13px; min-height: 39px; font-size: 12px; }
+.epoch-button[aria-pressed="true"], .route-button[aria-pressed="true"] { background: #c2b0e2; color: #202039; }
+.socket-time-select { width: 100%; min-height: 35px; border: 1px solid #afa0d455; border-radius: 4px; background: #121831; color: var(--paper); font: inherit; font-size: 11px; padding: 5px; margin-top: 5px; }
+.pulse-schedules { display: grid; gap: 9px; margin-top: 8px; }
+.pulse-schedule { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pulse-schedule strong { width: 100%; font-size: 11px; color: var(--dim); font-weight: 400; }
+.pulse-schedule .pulse { padding: 6px 10px; font-size: 12px; }
+.route-panel { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+.route-panel p { font-size: 12px; color: var(--dim); margin-bottom: 6px; }
+.route-button { background: #151a34; color: var(--paper); border: 1px solid #b1a2d65c; border-radius: 4px; min-height: 39px; padding: 7px 10px; font-size: 12px; }
+@media(max-width:650px) { .campaign-bar { gap: 4px; } .level-button { flex-direction: column; gap: 1px; padding: 6px 3px; text-align: center; font-size: 9px; } .level-button b { font-size: 15px; } .level-briefing h2 { font-size: 21px; } .campaign-tools { gap: 5px 11px; } .campaign-home { justify-content: center; } }
+
+.player-profile{display:grid;gap:8px;max-width:360px;margin:24px 0 6px;color:var(--muted);font-size:13px}.player-profile input{background:#161b32;border:1px solid #746588;border-radius:8px;padding:11px 14px;color:#f3eafa;font:inherit;min-width:0}.profile-note{font-size:12px;color:var(--muted);line-height:1.7}.ranked-bar{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:14px 18px;margin-bottom:18px;border:1px solid #9b7e62;background:#2d2539;border-radius:12px}.ranked-bar .text-btn{margin-left:auto}.ranking-modal{width:min(760px,calc(100% - 32px))}.ranking-table-wrap{max-height:45vh;overflow:auto;margin:18px 0}.ranking-table{border-collapse:collapse;width:100%;font-size:14px;text-align:left}.ranking-table th,.ranking-table td{padding:13px 9px;border-bottom:1px solid #7a6d853d;overflow-wrap:anywhere}.ranking-table th{font-size:11px;font-weight:400;color:var(--muted)}.ranking-table td:first-child{color:#dfb98d}.ranking-table td:nth-child(2){max-width:210px}.target-brief{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.target-chip{font-size:12px;padding:8px 11px;background:#11172b;border:1px solid #74658c66;border-radius:8px;line-height:1.7}.pulse-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:7px 0}.pulse-row strong{font-size:12px;font-weight:400;min-width:70px}.pulse-row button{padding:7px 10px;border:1px solid #685b7b;background:#181d36;color:#ded3ec;border-radius:6px;cursor:pointer}.pulse-row button[aria-pressed="true"]{background:#514164;border-color:#c8ace4;color:#fff}.pulse-row button:disabled{opacity:.45}.level-briefing #progress-note{margin-top:12px}.campaign-home{flex-wrap:wrap}
+@media(max-width:480px){.ranking-table{font-size:12px}.ranking-table th,.ranking-table td{padding:10px 5px}.ranked-bar{gap:9px}.player-profile{max-width:none}.actions{flex-wrap:wrap}.header{height:auto;min-height:76px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}.header .actions{margin-left:auto}.brand{flex-shrink:0}.brand strong{white-space:nowrap}}
+.ranking-table th{color:#676078}.ranking-table td:first-child{color:#795d3b}.player-profile,.profile-note{color:var(--dim)}
+.tutorial-panel{position:sticky;top:8px;z-index:10;margin:0 0 16px;padding:13px 16px;background:#282640f5;border:1px solid var(--gold);border-radius:6px;box-shadow:0 8px 24px #060b2680;overflow-wrap:anywhere}.tutorial-top{display:flex;gap:8px;justify-content:space-between;align-items:center}.tutorial-top h2{font-size:15px;line-height:1.4;color:var(--gold)}.tutorial-panel progress{display:block;width:100%;height:5px;margin:9px 0;accent-color:var(--gold)}.tutorial-panel p{font-size:13px;line-height:1.6}.tutorial-panel p small{display:block;font-size:11px;color:var(--dim);margin-top:2px}.tutorial-panel .actions{margin-top:9px;gap:7px}.tutorial-panel .button{font-size:12px;padding:6px 10px;min-height:36px}.tutorial-target{outline:3px solid #f4ce88!important;outline-offset:3px;box-shadow:0 0 0 6px #e6b08124!important;scroll-margin-top:225px}.tutorial-welcome-note{font-size:12px!important}.tutorial-progress{font-size:11px;color:var(--gold);white-space:nowrap}.tutorial-panel button{max-width:100%;white-space:normal}.header nav{min-width:0}.tutorial-entry{white-space:normal}
+@media(max-width:480px){.tutorial-panel{top:4px;padding:10px 11px;margin-bottom:12px}.tutorial-top h2{font-size:13px}.tutorial-panel p{font-size:12px}.tutorial-panel p small{font-size:10px}.tutorial-panel .button{font-size:11px;padding:5px 8px}.header .actions{gap:5px}.header .small{font-size:11px;padding:6px 9px}.tutorial-target{scroll-margin-top:240px}}
+</style>
+</head>
+<body>
+<header class="shell header">
+ <button id="home-btn" class="brand"><span class="seal" aria-hidden="true">月</span><span><strong data-copy="brand">借一轮月</strong><small data-copy="subtitle">星港追踪</small></span></button>
+ <nav class="actions"><button id="lang" class="button ghost small">English</button><button id="open-tutorial" class="button ghost small tutorial-entry">操作教学 / Tutorial</button><button id="open-rankings" class="button ghost small" data-copy="rankingTitle">排行榜</button><button id="help" class="button ghost small" data-copy="guide">说明</button></nav>
+</header>
+<main class="shell">
+ <p id="loading" class="loading" role="status">正在读取星港记忆…</p>
+ <section id="home" class="home" hidden>
+  <div>
+   <p class="kicker" data-copy="homeTag">星港时空推理</p><h1 class="serif" data-copy="title">借一轮月</h1>
+   <p class="sub" data-copy="subtitle">星港追踪</p><p class="intro" id="intro"></p>
+   <div class="actions">
+    <button class="button" id="begin" data-room-copy="solo">单机查案 →</button>
+    <button class="button ghost" id="open-lobby" data-room-copy="online" aria-controls="room-lobby" aria-expanded="false">联机房间</button>
+   </div>
+   <label class="player-profile" for="player-name"><span data-copy="playerName">玩家昵称</span><input id="player-name" maxlength="24" autocomplete="nickname" placeholder="取个喜欢的昵称"></label><p class="profile-note" data-copy="nameNote"></p><div class="actions"><button class="button ghost small" id="start-ranked" data-copy="startRanked"></button><button class="text-btn" id="resume-ranked" data-copy="resumeRanked" hidden></button></div><p id="ranking-notice" class="action-notice" role="status"></p><div class="campaign-home"><button id="home-campaign" class="text-btn" data-copy="campaignMode">五关旅程</button><button id="home-challenge" class="text-btn" data-copy="challengeMode">布局变奏</button></div>
+   <button class="text-btn tutorial-entry" id="home-tutorial">操作教学 / Tutorial</button>
+   <p class="meta" id="home-progress"></p>
+   <section id="room-lobby" class="room-lobby" aria-labelledby="lobby-title" hidden>
+    <h2 id="lobby-title" class="serif" data-room-copy="online">联机房间</h2>
+    <p class="muted" data-room-copy="lobbyIntro">把邀请链接发给队友，一起寻找景笺，在航道上布置拦截。</p>
+    <form id="room-form" novalidate>
+     <div class="room-fields">
+      <label for="room-name"><span data-room-copy="nickname">昵称</span><input id="room-name" maxlength="24" autocomplete="nickname" data-room-placeholder="nicknamePlaceholder"></label>
+      <label for="room-code"><span data-room-copy="roomCode">房间码</span><input id="room-code" class="room-code" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false" data-room-placeholder="codePlaceholder"></label>
+     </div>
+     <div class="actions">
+      <button id="room-create" class="button small" type="button" data-room-copy="create">创建房间</button>
+      <button id="room-join" class="button ghost small" type="submit" data-room-copy="join">加入房间</button>
+     </div>
+    </form>
+    <p id="lobby-status" class="room-notice" role="status" hidden></p>
+   </section>
+  </div>
+  <div class="home-art"><canvas id="cover" width="720" height="720" aria-hidden="true"></canvas><small>借一轮月　改一道轨</small></div>
+ </section>
+<section class="chapter" id="game" hidden>
+<section id="tutorial-panel" class="tutorial-panel" aria-labelledby="tutorial-title" hidden>
+ <div class="tutorial-top"><h2 id="tutorial-title">00 · 操作教学 / Tutorial</h2><span id="tutorial-progress" class="tutorial-progress"></span></div>
+ <progress id="tutorial-meter" max="8" value="0" aria-label="教学进度 / Tutorial progress"></progress>
+ <p id="tutorial-instruction" role="status" aria-live="polite" aria-atomic="true"></p>
+ <div class="actions"><button id="tutorial-locate" class="button ghost" type="button"></button><button id="tutorial-finish" class="button" type="button" hidden></button><button id="tutorial-skip" class="button ghost" type="button"></button></div>
+</section>
+<div class="chapter-top"><div><p class="kicker" data-copy="caseTag"></p><h1 class="serif" id="chapter-title"></h1></div><span id="case-status" class="count" role="status"></span></div>
+  <section id="ranked-bar" class="ranked-bar" hidden><strong id="ranked-label"></strong><span id="ranked-time"></span><button class="text-btn" id="exit-ranked" data-copy="exitRanked"></button></section><nav id="campaign-bar" class="campaign-bar" aria-label="Campaign"></nav>
+  <div class="campaign-tools" id="campaign-tools"><button class="text-btn" id="campaign-mode" data-copy="campaignMode"></button><button class="text-btn" id="challenge-mode" data-copy="challengeMode"></button><button class="text-btn" id="new-challenge" data-copy="newChallenge" hidden></button><span id="layout-code" class="layout-code"></span></div>
+  <section class="level-briefing" aria-labelledby="level-title"><h2 class="serif" id="level-title"></h2><p id="level-rule"></p><p id="progress-note"></p></section>
+  <div class="epoch-panel" id="epoch-panel" hidden><strong data-copy="epochLabel"></strong><button class="epoch-button" data-epoch="before" data-copy="beforeEpoch"></button><button class="epoch-button" data-epoch="after" data-copy="afterEpoch"></button></div>
+  <section id="room-bar" class="room-bar" aria-labelledby="room-heading" hidden>
+   <div class="room-bar-top">
+    <h2 id="room-heading"><span data-room-copy="roomCode">房间码</span> <strong class="room-code" id="active-room-code"></strong> <span class="muted" id="room-round"></span></h2>
+    <div class="actions">
+     <button id="room-reset" class="button ghost small" data-room-copy="reset" hidden>重开一轮</button>
+     <button id="room-leave" class="button ghost small" data-room-copy="leave">离开房间</button>
+    </div>
+   </div>
+   <p id="room-state" class="room-state" role="status"></p>
+   <ul id="room-roster" class="room-roster"></ul>
+   <div class="room-invite">
+    <label for="invite-link"><span data-room-copy="invite">邀请链接</span><input id="invite-link" readonly spellcheck="false"></label>
+    <button id="copy-invite" class="button small" data-room-copy="copyInvite">复制邀请链接</button>
+   </div>
+   <p id="room-notice" class="room-notice" role="status" hidden></p>
+  </section>
+
+<nav id="scene-tabs" class="timeline"><button class="time" data-scene="0" aria-pressed="true" data-copy="observatory"></button><button class="time" data-scene="1" aria-pressed="false" data-copy="starbridge"></button><button class="time" data-scene="2" aria-pressed="false" data-copy="mirrorDock"></button></nav>
+<div class="play-grid"><section><div class="frame"><canvas id="scene" class="scene" tabindex="0" width="1200" height="800"></canvas><span class="frame-note" data-copy="dragNote"></span></div><div class="view-controls"><label for="lens-size"><span data-copy="windowSize"></span><input id="lens-size" type="range" min="150" max="300" value="180"></label><button class="text-btn" id="reset-view" data-copy="resetView"></button></div></section>
+<aside class="inspector"><div class="lens-card"><div id="lens-token" class="lens-token" aria-hidden="true"><span id="lens-arrow"></span></div><div><h2 data-copy="inWindow"></h2><p id="carried-beam" aria-live="polite"></p></div></div><p class="kicker" id="device-label"></p><h2 class="serif device-title" id="device-title"></h2><p class="device-description" id="device-description"></p>
+<section id="source-controls"><div class="device-actions sources"><button class="source-button" data-source="moon"><span class="source-glyph source-moon">☾</span><strong data-copy="moon"></strong><small data-copy="blue"></small></button><button class="source-button" data-source="sun"><span class="source-glyph source-sun">☀</span><strong data-copy="sun"></strong><small data-copy="amber"></small></button><button class="source-button" data-source="star"><span class="source-glyph source-star">✧</span><strong data-copy="star"></strong><small data-copy="violet"></small></button></div><p class="rule" data-copy="sourceRule"></p></section>
+<section id="mirror-controls" hidden><div class="mirror-readout"><span id="mirror-symbol" class="mirror-symbol"></span><p id="mirror-preview"></p></div><div class="device-actions"><button class="button ghost" id="rotate-mirror" data-copy="rotate"></button><button class="button" id="reflect-beam" data-copy="reflect"></button></div><p class="rule" data-copy="mirrorRule"></p></section>
+<section id="socket-controls" hidden><div id="socket-grid" class="socket-grid"><button class="socket-button" data-socket="above"><strong data-copy="above"></strong><span data-socket-status></span><small data-socket-action></small></button><button class="socket-button" data-socket="right"><strong data-copy="right"></strong><span data-socket-status></span><small data-socket-action></small></button><button class="socket-button" data-socket="below"><strong data-copy="below"></strong><span data-socket-status></span><small data-socket-action></small></button><button class="socket-button" data-socket="left"><strong data-copy="left"></strong><span data-socket-status></span><small data-socket-action></small></button></div><p class="rule" data-copy="socketRule"></p><p class="rule" data-copy="filterRule"></p></section>
+<div class="hint-area"><button class="text-btn" id="hint" data-copy="hint"></button><p id="hint-text" class="hint-text"></p></div><p id="action-notice" class="action-notice" role="status"></p></aside></div>
+<section class="control-deck" aria-labelledby="replay-title">
+ <div class="control-deck-top">
+  <div><p class="kicker" data-copy="replayTag"></p><h2 id="replay-title" class="serif" data-copy="replayTitle"></h2>
+   <fieldset class="pulse-field"><legend data-copy="pulse"></legend><div class="pulse-schedules" id="pulse-schedules"></div></fieldset>
+  </div>
+  <div class="run-actions"><span id="replay-clock" class="replay-clock">20:10</span><button class="button" id="run" data-copy="run"></button><button class="button ghost" id="replay" data-copy="replay" disabled></button><button class="button ghost" id="reset-solo" data-copy="retryLevel"></button><button class="button" id="next-level" data-copy="nextLevel" hidden></button></div>
+ </div>
+ <div class="route-panel" id="route-panel" hidden><p data-copy="routeLabel"></p><div class="actions"><button class="route-button" data-route="short" data-copy="shortRoute"></button><button class="route-button" data-route="long" data-copy="longRoute"></button></div></div>
+ <p class="rule" id="timing-rule"></p>
+ <div class="replay-line"><input id="playback" type="range" min="0" max="25" step=".1" value="0" disabled><div class="time-ticks" id="time-ticks"></div></div>
+ <ol id="replay-events" class="replay-events"></ol><p id="replay-summary" class="replay-summary" aria-live="polite"></p>
+</section>
+</section></main>
+<footer class="footer"><span data-copy="footer">以中国借景与框景重想星港</span><span data-room-copy="fiction">虚构故事 · 单机和联机</span></footer>
+<dialog id="ranking-modal" class="modal ranking-modal" aria-labelledby="ranking-title"><h2 class="serif" id="ranking-title" data-copy="rankingTitle"></h2><p data-copy="rankingRule"></p><div class="actions"><button class="button ghost small" data-rank-kind="solo" data-copy="soloRank"></button><button class="button ghost small" data-rank-kind="team" data-copy="teamRank"></button><button class="text-btn" id="refresh-rankings" data-copy="refreshRank"></button></div><p id="ranking-status" role="status"></p><div class="ranking-table-wrap"><table class="ranking-table"><thead><tr><th data-copy="rankPosition"></th><th data-copy="playerName"></th><th data-copy="levelsCleared"></th><th data-copy="clearTime"></th></tr></thead><tbody id="ranking-rows"></tbody></table></div><p class="muted" data-copy="rankingFoot"></p><form method="dialog"><button class="button" data-copy="close"></button></form></dialog><dialog id="modal" class="modal" aria-labelledby="modal-title"></dialog>
+<dialog id="tutorial-welcome" class="modal" aria-labelledby="tutorial-welcome-title" aria-describedby="tutorial-welcome-body"><p class="kicker">00 / TUTORIAL</p><h2 class="serif" id="tutorial-welcome-title"></h2><p id="tutorial-welcome-body"></p><p id="tutorial-welcome-note" class="tutorial-welcome-note"></p><div class="actions"><button id="tutorial-welcome-start" type="button" class="button"></button><button id="tutorial-welcome-skip" type="button" class="button ghost"></button></div></dialog>
+<script>
+__PUZZLE__
+</script>
+<script>
+'use strict';
+const ART = __ART__;
+const LightPuzzle = window.LightPuzzle;
+const get = id => document.getElementById(id);
+const canvas = get('scene');
+const context = canvas.getContext('2d');
+const scenes = ART.map(() => new Image());
+const world = {w:1536,h:1024};
+const copy = {zh:{guide:'说明'},en:{guide:'Guide'}};
+const roomCopy = {
+ zh: {
+  solo: '单机查案 →', resumeSolo: '继续单机查案 →', online: '联机房间',
+  meta: '单机或联机 · 无需计时', fiction: '虚构故事 · 单机和联机',
+  lobbyIntro: '把邀请链接发给队友，一起寻找景笺，在航道上布置拦截。',
+  nickname: '昵称', nicknamePlaceholder: '输入你的昵称', roomCode: '房间码', codePlaceholder: '8 位房间码',
+  create: '创建房间', join: '加入房间', resume: '重返房间', connecting: '正在连接房间…',
+  round: n => `第 ${n} 轮`, playerCount: n => `${n} 人`, roster: '房间成员', host: '房主', you: '你',
+  onlineState: '已连接 · 景笺和拦截结果会同步', offlineState: '连接中断，正在重连…',
+  invite: '邀请链接', copyInvite: '复制邀请链接', inviteCopied: '邀请链接已复制。',
+  inviteSelected: '已选中链接。请用设备的复制功能复制。',
+  leave: '离开房间', reset: '重开一轮', resetConfirm: '重开一轮会清除房间当前的景笺和拦截记录。确定重开吗？',
+  leaving: '正在离开房间…', leaveRetry: '暂时无法离开房间，请检查网络后重试。',
+  guide: '联机时各自操作圆窗，景笺与拦截结果会全队共享。集齐三张后，任何队友都能提交拦截。',
+  errors: {
+   file_origin: '请用游戏的在线网址打开联机房间。',
+   network: '无法连接房间，请检查网络后重试。',
+   invalid_name: '请输入 1 至 24 个字符的昵称。',
+   invalid_room_code: '请输入有效的 8 位房间码。',
+   room_not_found: '找不到这个房间，请核对房间码。',
+   room_expired: '这个房间已过期，请创建或加入另一个房间。',
+   room_full: '房间已满，最多 8 人。',
+   unauthorized: '本次房间登录已失效，请重新加入。',
+   forbidden: '只有房主可以执行此操作。',
+   stale_round: '房主已开启新一轮，请在同步后重试。',
+   room_solved: '这一轮已经结案。',
+   clues_incomplete: '集齐三张景笺后才可布置拦截。',
+   view_not_ready: '当前取景尚未满足记录条件。',
+   invalid_action: '无法提交这次操作，请刷新页面后重试。',
+   conflict: '房间正在更新，请稍后重试。',
+   service_unavailable: '房间服务暂时不可用，请稍后重试。',
+  },
+ },
+ en: {
+  solo: 'Play solo →', resumeSolo: 'Continue solo →', online: 'Online room',
+  meta: 'Solo or online · No timer', fiction: 'Fictional case · Solo and online play',
+  lobbyIntro: 'Invite teammates to gather memories and plan an interception together.',
+  nickname: 'Nickname', nicknamePlaceholder: 'Enter your nickname', roomCode: 'Room code', codePlaceholder: '8-character code',
+  create: 'Create room', join: 'Join room', resume: 'Rejoin room', connecting: 'Connecting to the room…',
+  round: n => `Round ${n}`, playerCount: n => `${n} ${n === 1 ? 'player' : 'players'}`, roster: 'Room members', host: 'Host', you: 'You',
+  onlineState: 'Connected · Memories and interception results sync across devices', offlineState: 'Connection lost. Reconnecting…',
+  invite: 'Invite link', copyInvite: 'Copy invite link', inviteCopied: 'Invite link copied.',
+  inviteSelected: 'Link selected. Use your device’s copy command.',
+  leave: 'Leave room', reset: 'Start a new round', resetConfirm: 'Starting a new round clears the room’s memories and interception record. Start over?',
+  leaving: 'Leaving the room…', leaveRetry: 'Could not leave the room. Check your connection and try again.',
+  guide: 'In an online room, everyone moves their own window and shares every recorded memory and result. Once the team finds all three memories, any player can send an interception.',
+  errors: {
+   file_origin: 'Open the game at its online address to use rooms.',
+   network: 'Could not connect to the room. Check your connection and try again.',
+   invalid_name: 'Enter a nickname with 1 to 24 characters.',
+   invalid_room_code: 'Enter a valid 8-character room code.',
+   room_not_found: 'Room not found. Check the room code.',
+   room_expired: 'This room has expired. Create or join another room.',
+   room_full: 'This room is full. Up to 8 players can join.',
+   unauthorized: 'Your room session ended. Join the room again.',
+   forbidden: 'Only the host can do that.',
+   stale_round: 'The host started a new round. Try again once the room is in sync.',
+   room_solved: 'This round is already solved.',
+   clues_incomplete: 'Find all three memories before placing an interception.',
+   view_not_ready: 'The current framing is not ready to record.',
+   invalid_action: 'Could not send this move. Reload the page and try again.',
+   conflict: 'The room is updating. Try again in a moment.',
+   service_unavailable: 'Rooms are temporarily unavailable. Try again in a moment.',
+  },
+ },
+};
+const ROOM_API = '/api/rooms';
+const ROOM_CODE = /^[0-9ABCDEFGHJKMNPQRSTVWXYZ]{8}$/;
+const SESSION_PREFIX = 'borrowed-moon-spy-room:';
+const LANGUAGE_KEY = 'borrowed-moon-spy-language';
+const SOLO_STORAGE_KEY = 'borrowed-moon-light-campaign-v2';
+const TUTORIAL_STORAGE_KEY = 'borrowed-moon-tutorial-v1';
+let tutorial = null;
+let tutorialSeen = false;
+try { tutorialSeen = ['completed','skipped'].includes(localStorage.getItem(TUTORIAL_STORAGE_KEY)); } catch { /* Keep the lesson available without storage. */ }
+let language = getSession(LANGUAGE_KEY) === 'en' ? 'en' : 'zh';
+let phase = 'home';
+let sceneIndex = 0;
+const freshViews = () => Array.from({length:3}, () => ({x:290,y:250,r:180}));
+let lensViews = freshViews();
+let soloLibrary = loadSoloLibrary();
+let puzzle = soloLibrary[soloLibrary.activeMode];
+let replay = {playing:false,time:10,startedAt:0};
+let hintLevels = [0,0,0];
+let actionNotice = null;
+let soloOutcomeShown = false;
+let drag = null;
+let framePending = false;
+let modalType = null;
+let connection = null;
+let savedSoloState = null;
+let ranked = null;
+let savedRankedSolo = null;
+let rankKind = 'solo';
+const PROFILE_KEY = 'borrowed-moon-player-name';
+const RANK_SESSION_KEY = 'borrowed-moon-ranked-session';
+let lobbyBusy = false;
+let lobbyNotice = null;
+const lang = () => copy[language];
+const roomText = () => roomCopy[language];
+const view = () => lensViews[sceneIndex];
+const clamp = (value,min,max) => Math.max(min,Math.min(max,value));
+const localize = pair => pair[language === 'zh' ? 1 : 0];
+
+function randomSeed() {
+ return crypto.getRandomValues(new Uint32Array(1))[0];
+}
+
+function loadSoloLibrary() {
+ let saved = {};
+ try { saved = JSON.parse(localStorage.getItem(SOLO_STORAGE_KEY) || '{}'); } catch { /* Storage is optional. */ }
+ const library = {
+  activeMode: saved.activeMode === 'challenge' ? 'challenge' : 'campaign',
+  campaign: LightPuzzle.initialPuzzle(),
+  challenge: LightPuzzle.initialPuzzle({mode: 'challenge', seed: randomSeed()}),
+ };
+ for (const mode of ['campaign', 'challenge']) {
+  try {
+   const candidate = LightPuzzle.migratePuzzle(saved[mode]);
+   if (candidate.mode === mode) library[mode] = candidate;
+  } catch { /* Keep the valid initial state when an old save cannot be read. */ }
+ }
+ return library;
+}
+
+function saveSoloProgress() {
+ if (connection || ranked || tutorial) return;
+ soloLibrary[puzzle.mode] = structuredClone(puzzle);
+ soloLibrary.activeMode = puzzle.mode;
+ const unlocked = Math.max(soloLibrary.campaign.unlocked, soloLibrary.challenge.unlocked);
+ const completed = soloLibrary.campaign.completed | soloLibrary.challenge.completed;
+ soloLibrary.campaign.completed = completed;
+ soloLibrary.challenge.completed = completed;
+ soloLibrary.campaign.unlocked = unlocked;
+ soloLibrary.challenge.unlocked = unlocked;
+ try { localStorage.setItem(SOLO_STORAGE_KEY, JSON.stringify(soloLibrary)); } catch { /* The current session remains playable. */ }
+}
+
+function puzzleIdentity(state) {
+ return [state.mode, state.levelIndex, state.seed].join(':');
+}
+
+function puzzleConfig() {
+ return LightPuzzle.getPuzzleConfig(puzzle);
+}
+
+function canChangeLevel() {
+ return !tutorial && !ranked && !roomControlsLocked() && (!connection || isHost());
+}
+
+function getSession(key) {
+ try { return sessionStorage.getItem(key); } catch { return null; }
+}
+
+function setSession(key, value) {
+ try {
+  if (value === null) sessionStorage.removeItem(key);
+  else sessionStorage.setItem(key, value);
+ } catch { /* Private browsing can limit session storage. */ }
+}
+
+function storedRoom(code) {
+ if (!ROOM_CODE.test(code)) return null;
+ try {
+  const saved = JSON.parse(getSession(SESSION_PREFIX + code));
+  return typeof saved?.token === 'string' && typeof saved?.name === 'string' ? saved : null;
+ } catch { return null; }
+}
+
+function roomCodeInput() {
+ return get('room-code').value.trim().toUpperCase();
+}
+
+function setRoomAddress(code) {
+ const address = new URL(location.href);
+ if (code) address.searchParams.set('room', code);
+ else address.searchParams.delete('room');
+ try { history.replaceState(null, '', address); } catch { /* The room can still be played. */ }
+}
+
+function errorText(key) {
+ const {errors} = roomText();
+ return errors[key] || errors.service_unavailable;
+}
+
+function renderLobby() {
+ const t = roomText();
+ get('room-join').textContent = storedRoom(roomCodeInput()) ? t.resume : t.join;
+ for (const id of ['room-create','room-join','room-code','room-name','begin','open-lobby']) {
+  get(id).disabled = lobbyBusy;
+ }
+ for(const id of ['open-tutorial','home-tutorial'])get(id).disabled=Boolean(tutorial||connection||ranked||lobbyBusy);
+ const status = get('lobby-status');
+ status.hidden = !lobbyBusy && !lobbyNotice;
+ status.classList.toggle('room-error', Boolean(lobbyNotice));
+ status.textContent = lobbyBusy ? t.connecting : lobbyNotice ? errorText(lobbyNotice) : '';
+}
+
+function openLobby(code = null, focus = true) {
+ if (code !== null) get('room-code').value = code;
+ get('room-lobby').hidden = false;
+ get('open-lobby').setAttribute('aria-expanded', 'true');
+ if (!/^https?:$/.test(location.protocol)) lobbyNotice = 'file_origin';
+ renderLobby();
+ if (focus) get(storedRoom(roomCodeInput()) ? 'room-join' : 'room-name').focus();
+}
+
+class RoomRequestError extends Error {
+ constructor(key, status = 0) {
+  super(key);
+  this.key = key;
+  this.status = status;
+ }
+}
+
+async function requestRoom(path = '', {token, body} = {}) {
+ const headers = {};
+ if (token) headers.Authorization = `Bearer ${token}`;
+ if (body) headers['Content-Type'] = 'application/json';
+ const controller = new AbortController();
+ const timeout = setTimeout(() => controller.abort(), 9000);
+ try {
+  let response;
+  try {
+   response = await fetch(ROOM_API + path, {
+    method: body ? 'POST' : 'GET',
+    body: body ? JSON.stringify(body) : undefined,
+    headers,
+    cache: 'no-store',
+    signal: controller.signal,
+   });
+  } catch { throw new RoomRequestError('network'); }
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new RoomRequestError(payload?.error || 'service_unavailable', response.status);
+  if (body?.type !== 'leave' && (!ROOM_CODE.test(payload?.room?.code ?? '') || typeof payload.playerId !== 'string')) {
+   throw new RoomRequestError('service_unavailable');
+  }
+  return payload;
+ } finally {
+  clearTimeout(timeout);
+ }
+}
+
+function isHost(active = connection) {
+ return Boolean(active?.room?.players.find(player => player.id === active.playerId)?.isHost);
+}
+
+function roomControlsLocked() {
+ return Boolean(ranked?.busy || connection && (connection.busy || !connection.connected));
+}
+
+function resetPersonalViews() {
+ sceneIndex = 0;
+ lensViews = freshViews();
+ hintLevels = [0,0,0];
+ drag = null;
+ stopReplay();
+}
+
+function renderRoomBar() {
+ const active = connection;
+ get('room-bar').hidden = !active;
+ if (!active) return;
+ const t = roomText();
+ const {room} = active;
+ get('active-room-code').textContent = room.code;
+ get('room-round').textContent = t.round(room.round);
+ get('room-reset').hidden = !isHost(active);
+ get('room-reset').disabled = roomControlsLocked();
+ get('room-leave').disabled = active.busy;
+ get('room-leave').textContent = active.leaving ? t.leaving : t.leave;
+ const state = get('room-state');
+ const status = active.connected ? `${t.onlineState} · ${t.playerCount(room.players.length)}` : t.offlineState;
+ if (state.textContent !== status) state.textContent = status;
+ state.toggleAttribute('data-offline', !active.connected);
+ const roster = get('room-roster');
+ roster.setAttribute('aria-label', t.roster);
+ const members = room.players.map(player => {
+  const item = document.createElement('li');
+  item.textContent = player.name;
+  for (const tag of [player.isHost ? t.host : '', player.id === active.playerId ? t.you : '']) {
+   if (!tag) continue;
+   const badge = document.createElement('span');
+   badge.className = 'player-tag';
+   badge.textContent = tag;
+   item.append(badge);
+  }
+  return item;
+ });
+ roster.replaceChildren(...members);
+ const link = get('invite-link');
+ if (link.value !== active.invite) link.value = active.invite;
+ const notice = get('room-notice');
+ const noticeText = active.error ? errorText(active.error) : active.notice ? t[active.notice] : '';
+ notice.hidden = !noticeText;
+ notice.classList.toggle('room-error', Boolean(active.error));
+ if (notice.textContent !== noticeText) notice.textContent = noticeText;
+}
+
+function showRoomResult() {
+ const active = connection;
+ if (!active || phase !== 'game' || !puzzle.solved || replay.playing || get('modal').open) return;
+ if (active.announcedRound === active.room.round) return;
+ active.announcedRound = active.room.round;
+ showModal('solved');
+}
+
+function acceptRoomSnapshot(active, room) {
+ if (connection !== active || room.code !== active.code) return false;
+ const previous = active.room;
+ if (previous && (room.revision <= previous.revision || room.round < previous.round)) return false;
+ const newRound = previous && (room.round !== previous.round || puzzleIdentity(room.puzzle) !== puzzleIdentity(previous.puzzle));
+ const next = room.puzzle ? structuredClone(room.puzzle) : LightPuzzle.initialPuzzle();
+ const sameRoster = previous && JSON.stringify(previous.players) === JSON.stringify(room.players);
+ const newAttempt = next.attempt && (!previous?.puzzle?.attempt ||
+  JSON.stringify(next.attempt) !== JSON.stringify(previous.puzzle.attempt) ||
+  sameRoster && JSON.stringify(next) === JSON.stringify(previous.puzzle));
+ if (newRound) {
+  active.announcedRound = null;
+  resetPersonalViews();
+  active.error = null;
+  active.notice = null;
+  if (modalType === 'solved' && get('modal').open) get('modal').close();
+ }
+ active.room = room;
+ puzzle = next;
+ if (!puzzle.attempt) stopReplay();
+ if (phase === 'game') {
+  renderGame();
+  renderRoomBar();
+  if (newAttempt) beginReplay();
+  else showRoomResult();
+ }
+ return true;
+}
+
+function detachRoom(forget = false) {
+ const active = connection;
+ if (!active) return;
+ connection = null;
+ clearTimeout(active.pollTimer);
+ if (forget) {
+  setSession(SESSION_PREFIX + active.code, null);
+  setRoomAddress(null);
+ }
+ if (get('modal').open) {
+  get('modal').returnValue = '';
+  modalType = null;
+  get('modal').close();
+ }
+ stopReplay();
+ ({sceneIndex, lensViews, hintLevels, puzzle, soloOutcomeShown} = savedSoloState);
+ savedSoloState = null;
+ drag = null;
+ get('room-bar').hidden = true;
+}
+
+function setRoomConnected(active, value) {
+ if (connection !== active || active.connected === value) return;
+ active.connected = value;
+ if (value) active.error = null;
+ renderRoomBar();
+ renderGame();
+ requestDraw();
+}
+
+function roomSessionEnded(error) {
+ return [401, 404, 410].includes(error.status);
+}
+
+function reportRoomError(active, error) {
+ if (connection !== active) return;
+ if (roomSessionEnded(error)) {
+  if (active.leaving) {
+   finishLeavingRoom();
+   return;
+  }
+  detachRoom(true);
+  lobbyNotice = error.key;
+  showHome();
+  openLobby(active.code, false);
+  return;
+ }
+ active.error = error.key || 'service_unavailable';
+ if (['network','service_unavailable'].includes(error.key) || error.status >= 500) setRoomConnected(active, false);
+ renderRoomBar();
+}
+
+async function refreshRoom(active) {
+ if (connection !== active || active.refreshing) return;
+ active.refreshing = true;
+ try {
+  const payload = await requestRoom(`/${active.code}`, {token: active.token});
+  if (connection !== active) return;
+  setRoomConnected(active, true);
+  acceptRoomSnapshot(active, payload.room);
+ } catch (error) {
+  reportRoomError(active, error);
+ } finally {
+  active.refreshing = false;
+ }
+}
+
+function scheduleRoomPoll(active) {
+ if (connection !== active) return;
+ active.pollTimer = setTimeout(async () => {
+  await refreshRoom(active);
+  scheduleRoomPoll(active);
+ }, 1500);
+}
+
+function enterRoom(payload, token, name) {
+ const {room, playerId} = payload;
+ const invite = new URL(location.pathname, location.origin);
+ invite.searchParams.set('room', room.code);
+ const active = {
+  code: room.code, token, playerId, room: null, invite: invite.href,
+  connected: true, busy: false, refreshing: false, leaving: false, pollTimer: null,
+  announcedRound: null, notice: null, error: null,
+ };
+ savedSoloState = {sceneIndex, lensViews, hintLevels, puzzle, soloOutcomeShown};
+ connection = active;
+ resetPersonalViews();
+ acceptRoomSnapshot(active, room);
+ setSession(SESSION_PREFIX + room.code, JSON.stringify({token, name}));
+ setRoomAddress(room.code);
+ get('room-code').value = room.code;
+ showGame();
+ if (puzzle.attempt) beginReplay();
+ renderRoomBar();
+ showRoomResult();
+ scheduleRoomPoll(active);
+}
+
+async function submitRoom(action) {
+ if(ranked) exitRanked();
+ if(!get("room-name").value.trim())get("room-name").value=playerNickname();
+ if (lobbyBusy || connection || tutorial || ranked) return;
+ const code = roomCodeInput();
+ const saved = action === 'join' ? storedRoom(code) : null;
+ const name = (saved?.name || get('room-name').value).normalize('NFC').trim();
+ lobbyNotice = null;
+ if (!/^https?:$/.test(location.protocol)) lobbyNotice = 'file_origin';
+ else if (action === 'join' && !ROOM_CODE.test(code)) lobbyNotice = 'invalid_room_code';
+ else if (!saved && (!name || [...name].length > 24 || /[\u0000-\u001f\u007f-\u009f]/u.test(name))) lobbyNotice = 'invalid_name';
+ if (lobbyNotice) {
+  renderLobby();
+  if (lobbyNotice === 'invalid_name') get('room-name').focus();
+  if (lobbyNotice === 'invalid_room_code') get('room-code').focus();
+  return;
+ }
+ lobbyBusy = true;
+ renderLobby();
+ try {
+  const payload = saved ? await requestRoom(`/${code}`, {token: saved.token}) :
+   await requestRoom(action === 'create' ? '' : `/${code}/join`, {body: {name}});
+  const token = saved?.token ?? payload.token;
+  if (typeof token !== 'string') throw new RoomRequestError('service_unavailable');
+  get('room-name').value = name;
+  enterRoom(payload, token, name);
+ } catch (error) {
+  if (saved && roomSessionEnded(error)) setSession(SESSION_PREFIX + code, null);
+  lobbyNotice = error.key || 'service_unavailable';
+ } finally {
+  lobbyBusy = false;
+  renderLobby();
+ }
+}
+
+async function roomAction(type, fields = {}) {
+ const active = connection;
+ if (!active || roomControlsLocked()) return;
+ active.busy = true;
+ active.error = null;
+ active.notice = null;
+ renderRoomBar();
+ renderGame();
+ requestDraw();
+ try {
+  const {room} = await requestRoom(`/${active.code}/action`, {
+   token: active.token,
+   body: {type, round: active.room.round, ...(type === 'puzzle' ? {expectedRevision: active.room.revision} : {}), ...fields},
+  });
+  acceptRoomSnapshot(active, room);
+ } catch (error) {
+  reportRoomError(active, error);
+  await refreshRoom(active);
+ } finally {
+  active.busy = false;
+  if (connection === active) {
+   renderRoomBar();
+   renderGame();
+   requestDraw();
+  }
+ }
+}
+
+function finishLeavingRoom() {
+ detachRoom(true);
+ lobbyNotice = null;
+ get('room-code').value = '';
+ get('room-lobby').hidden = true;
+ get('open-lobby').setAttribute('aria-expanded', 'false');
+ showHome();
+ get('open-lobby').focus();
+}
+
+async function leaveRoom() {
+ const active = connection;
+ if (!active || active.busy) return;
+ active.busy = true;
+ active.leaving = true;
+ active.error = null;
+ active.notice = null;
+ renderRoomBar();
+ renderGame();
+ requestDraw();
+ try {
+  await requestRoom(`/${active.code}/action`, {token: active.token, body: {type: 'leave', round: active.room.round}});
+  if (connection === active) finishLeavingRoom();
+ } catch (error) {
+  if (connection !== active) return;
+  if (roomSessionEnded(error)) finishLeavingRoom();
+  else if (error.key === 'network' || error.status >= 500) {
+   active.notice = 'leaveRetry';
+   setRoomConnected(active, false);
+  } else {
+   reportRoomError(active, error);
+   await refreshRoom(active);
+  }
+ } finally {
+  active.busy = false;
+  active.leaving = false;
+  if (connection === active) {
+   renderRoomBar();
+   renderGame();
+   requestDraw();
+  }
+ }
+}
+
+async function copyRoomInvite() {
+ const active = connection;
+ if (!active) return;
+ try {
+  await navigator.clipboard.writeText(active.invite);
+  if (connection !== active) return;
+  active.notice = 'inviteCopied';
+ } catch {
+  if (connection !== active) return;
+  const input = get('invite-link');
+  input.focus();
+  input.select();
+  active.notice = 'inviteSelected';
+ }
+ active.error = null;
+ renderRoomBar();
+}
+
+const beamColors = {blue:'#8cd6ff',amber:'#ffc677',violet:'#b8a0ee'};
+const mirrorMarks = ['/', '\\', '−', '|'];
+const sources = [{source:'moon',color:'blue',x:1190,y:260,r:59},{source:'sun',color:'amber',x:650,y:370,r:48},{source:'star',color:'violet',x:355,y:450,r:48}];
+const socketOffsets = {above:[0,-1],right:[1,0],below:[0,1],left:[-1,0]};
+const switchPoint = {x:765,y:465};
+const mirrorPoint = {x:940,y:510};
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+Object.assign(copy.zh, {
+ brand:'借月改轨',title:'借月改轨',subtitle:'光越过时间',homeTag:'一束光，穿过三个时刻',intro:'把光借进圆窗，带过镜面与星桥。让过去的光，改变穿梭舱的未来。',meta:'借光 · 反射 · 改变航道',caseTag:'星港 / 三段相连的记忆',
+ observatory:'观测舱',starbridge:'星桥',mirrorDock:'月影港',dragNote:'点击装置 · 拖动圆窗取景',windowSize:'圆窗大小',resetView:'重置取景',inWindow:'圆窗中携带',
+ empty:'空窗',blue:'蓝光',amber:'琥珀光',violet:'紫光',moon:'月光',sun:'日光',star:'星光',
+ sourceRule:'点击发光体或光源按钮，借来一束光。圆窗一次携带一束，新光会替换旧光。',mirrorRule:'实线是入射光，虚线是下一次反射的预览。按下反射，才会改变圆窗里的方向。',
+ socketRule:'圆窗有光时，点击发射器即可放入。圆窗空着时，点击已有光的发射器即可取回。',filterRule:'蓝色滤镜只让蓝光通过。接收器下方敞开，其余三面有遮光板。',
+ rotate:'转动镜面',reflect:'反射圆窗中的光',above:'上方',below:'下方',left:'左侧',right:'右侧',place:'放入圆窗光',take:'取回圆窗',socketEmpty:'空发射器',hint:'一点提示',nextHint:'再一点提示',lastHint:'提示已展开',
+ deviceLabels:['借光','方向','反射'],deviceTitles:['三种光源','让光遇见开关','转过一束光'],deviceDescriptions:['圆窗记住光的颜色和方向。带着它，去另一处场景看看。','四个发射器围着中央接收器。光沿圆窗里箭头的方向射出。','转动镜面，比较实线与虚线。反射后的光会随圆窗离开。'],
+ noBeamPreview:'先借一束光，就能看见反射预览。',preview:(a,b)=>'反射预览 '+a+' → '+b,directions:{up:'向上',down:'向下',left:'向左',right:'向右'},
+ hints:[['圆窗里的箭头也会随光一起带走。','不同颜色经过同一个装置时，会发生什么？','可以借另一种光，再回星桥比较。'],['光真的穿过了接收器敞开的那一面吗？','信号从发出到抵达，隔了多久？','比较信号抵达与穿梭舱经过岔口的时刻。'],['转动镜面时，虚线的方向有什么变化？','实线来自已有的光，虚线是下一次反射的预览。','按下反射后，再看看圆窗中的箭头。']],
+ replayTag:'光的回声 / 航道回放',replayTitle:'看看接下来发生什么',pulse:'模拟发出脉冲的时刻',run:'运行回放',replay:'再看一次',reset:'重置装置',delayRule:'脉冲经过 3 分钟延时才会改变岔口。穿梭舱在模拟时刻 20:15 经过。',
+ replayReady:'改变装置后，运行回放，观察光与穿梭舱。',replayRunning:'留意光的回声何时抵达岔口。',replayLabel:'20:10 至 20:20 的模拟回放',stateEditing:'改变光，观察因果',stateSolved:'航道已改变',footer:'借景与框景，在星港重逢',
+ filterLabel:'蓝色接收器 · 下方进光',mirrorLabel:'可转动反射镜',incoming:'入射',outgoing:'反射预览',delayedGate:'航道回声 · 延时 3 分钟',dockLabel:'回收泊位',externalLabel:'外部航道',junction:'岔口 · 20:15',
+ trace:{pulse_sent:'发射器送出光脉冲',no_emission:'发射器没有送出光',light_filtered:'蓝色滤镜挡下了光',light_turned_away:'光遇到遮光板，未进入接收器',light_missed_switch:'光路没有经过中央接收器',pulse_passed_early:'航道信号提前闪过',pulse_arrived_late:'光信号在穿梭舱之后抵达',switch_lit:'岔口在穿梭舱抵达时转向',shuttle_passed:'穿梭舱沿外部航道离开',shuttle_redirected:'穿梭舱转入回收泊位'},
+ results:{no_light:'没有光从发射器出发。运行前，看看发射器里有什么。',wrong_color:'光被蓝色滤镜挡下了。换一种光，观察滤镜的反应。',wrong_direction:'光的方向无法进入接收器下方的开口。比较反射前后的方向。',wrong_socket:'光保持了向上的方向，但从这个位置出发，光路没有穿过接收器下方的开口。',too_early:'航道信号先闪过，穿梭舱才经过岔口。试着改变脉冲时刻。',too_late:'穿梭舱经过岔口后，光的回声才抵达。试着改变脉冲时刻。',caught:'光的回声与穿梭舱在岔口相遇。航道转向，穿梭舱驶入回收泊位。'},
+ solvedTag:'航道已改写',solvedTitle:'这束月光，赶上了未来',solvedBody:'圆窗保存月光，镜面改变方向。蓝光从下方进入接收器。20:12 发出的脉冲在 20:15 唤醒岔口，把穿梭舱引向回收泊位。',
+ guideTitle:'光会记住什么',guideRules:['圆窗携带一束有颜色、有方向的光，换场景也会留下。','镜面转动改变预览。反射操作会把新方向保存在圆窗里。','蓝色滤镜与接收器的开口，决定哪些光能进入装置。','脉冲的回声需要 3 分钟。穿梭舱在模拟时刻 20:15 经过岔口。'],guideFoot:'可以随时借新光、挪动发射器里的光，再运行回放观察变化。',close:'关闭',back:'回看装置',again:'开启新一轮'
+});
+Object.assign(copy.en, {
+ brand:'BORROWED MOON',title:'Borrowed Moon',subtitle:'Light Across Time',homeTag:'ONE RAY, THREE MOMENTS',intro:'Borrow a ray into a round window. Carry it through mirrors and memories, and change the shuttle’s future.',meta:'Borrow light · Reflect it · Change the route',caseTag:'STARPORT / THREE CONNECTED ECHOES',
+ observatory:'Observatory',starbridge:'Starbridge',mirrorDock:'Mirror Dock',dragNote:'Click a device · Drag to move the window',windowSize:'Window size',resetView:'Reset view',inWindow:'CARRIED IN THE WINDOW',
+ empty:'Empty window',blue:'Blue light',amber:'Amber light',violet:'Violet light',moon:'Moonlight',sun:'Sunlight',star:'Starlight',sourceRule:'Click a glowing source or a button to borrow light. The window holds one ray. Borrowing again replaces it.',mirrorRule:'The solid line is incoming light. The dashed line previews the next reflection. Use Reflect to keep the new direction.',socketRule:'With a carried ray, click an emitter to place it. With an empty window, click a filled emitter to take its ray back.',filterRule:'The filter passes blue light. Its intake opens below, with shields on the other three sides.',
+ rotate:'Rotate the mirror',reflect:'Reflect the carried ray',above:'Above',below:'Below',left:'Left',right:'Right',place:'Place carried ray',take:'Take into window',socketEmpty:'Empty emitter',hint:'A little hint',nextHint:'Another hint',lastHint:'Hints open',
+ deviceLabels:['BORROW','DIRECTION','REFLECT'],deviceTitles:['Three sources','Let light meet the switch','Turn a ray'],deviceDescriptions:['The window remembers color and direction. Carry its light into another scene.','Four emitters surround the receiver. Each ray follows the arrow stored in the window.','Turn the mirror and compare the solid and dashed lines. The window keeps the reflected ray.'],
+ noBeamPreview:'Borrow a ray to see its reflection preview.',preview:(a,b)=>'Reflection preview '+a+' → '+b,directions:{up:'Up',down:'Down',left:'Left',right:'Right'},
+ hints:[['The arrow travels with the light in your window.','What changes when different colors reach the same device?','Borrow another color and compare it at Starbridge.'],['Does the ray enter through the receiver’s open side?','How long is the delay between the pulse and its arrival?','Compare the signal’s arrival with the shuttle at the junction.'],['What happens to the dashed line when you turn the mirror?','The solid line is the carried ray. The dashed line previews its next reflection.','After using Reflect, look at the arrow in your window again.']],
+ replayTag:'LIGHT ECHO / ROUTE REPLAY',replayTitle:'See what happens next',pulse:'Simulated pulse time',run:'Run replay',replay:'Watch again',reset:'Reset devices',delayRule:'The pulse takes 3 minutes to reach the junction. The shuttle passes at simulated time 20:15.',replayReady:'Change a device, then replay to follow the light and shuttle.',replayRunning:'Watch when the light echo reaches the junction.',replayLabel:'Simulated replay from 20:10 to 20:20',stateEditing:'Change light, follow cause and effect',stateSolved:'The route has changed',footer:'Borrowed scenery, reframed among the stars',
+ filterLabel:'Blue receiver · Intake below',mirrorLabel:'Rotating mirror',incoming:'Incoming',outgoing:'Reflection preview',delayedGate:'Route echo · 3-minute delay',dockLabel:'Recovery berth',externalLabel:'Outer route',junction:'Junction · 20:15',
+ trace:{pulse_sent:'The emitters send a light pulse',no_emission:'No light leaves the emitters',light_filtered:'The blue filter blocks the light',light_turned_away:'The shields block the incoming ray',light_missed_switch:'The ray misses the receiver',pulse_passed_early:'The route signal flashes too soon',pulse_arrived_late:'The signal arrives after the shuttle',switch_lit:'The route turns as the shuttle arrives',shuttle_passed:'The shuttle follows the outer route',shuttle_redirected:'The shuttle enters the recovery berth'},
+ results:{no_light:'No light left the emitters. Check what is inside them before the next replay.',wrong_color:'The blue filter blocked the light. Borrow another color and watch the filter again.',wrong_direction:'The ray cannot enter the receiver’s opening below. Compare its direction before and after reflection.',wrong_socket:'The ray points up, but from this position its path misses the opening below the receiver.',too_early:'The route signal flashed before the shuttle reached the junction. Try changing the pulse time.',too_late:'The light echo arrived after the shuttle passed. Try changing the pulse time.',caught:'The light echo and shuttle meet at the junction. The route turns into the recovery berth.'},
+ solvedTag:'A DIFFERENT COURSE',solvedTitle:'Moonlight catches up with the future',solvedBody:'The window kept moonlight and the mirror changed its direction. Blue light entered the receiver from below. The 20:12 pulse reached the junction at 20:15, turning the shuttle toward the recovery berth.',guideTitle:'What light remembers',guideRules:['The window carries one ray with a color and direction, even across scenes.','Rotating the mirror changes the preview. Reflect keeps the new direction in the window.','The blue filter and open intake determine which rays enter the device.','The pulse echoes after 3 minutes. The shuttle crosses the junction at simulated time 20:15.'],guideFoot:'Borrow another ray, move light between emitters, and replay to see what changes.',close:'Close',back:'Review devices',again:'Start a new round'
+});
+for (const code of ['slot_empty','beam_missing']) {
+ roomCopy.zh.errors[code] = '圆窗里还没有光。先去观测舱借一束。';
+ roomCopy.en.errors[code] = 'The window is empty. Borrow a ray at the observatory.';
+}
+Object.assign(roomCopy.zh.errors,{slot_full:'圆窗已有一束光。先把它放入发射器，再取回另一束。',socket_empty:'这个发射器是空的。',puzzle_solved:'航道已改变，可以重播或开启新一轮。',stale_revision:'队友刚更新了装置，已刷新状态，请再操作一次。'});
+Object.assign(roomCopy.en.errors,{slot_full:'The window already holds a ray. Place it before taking another.',socket_empty:'This emitter is empty.',puzzle_solved:'The route has changed. Replay it or start a new round.',stale_revision:'A teammate changed the device. The state has refreshed; try your action again.'});
+roomCopy.zh.solo='单机体验 →'; roomCopy.en.solo='Play solo →';
+roomCopy.zh.resetConfirm='开启新一轮会重置房间的光线装置和运行记录。确定重开吗？';
+roomCopy.en.resetConfirm='Starting a new round resets the shared devices and replay. Start over?';
+roomCopy.zh.lobbyIntro = '邀请队友，一起借光、反射，改变星港的航道。';
+roomCopy.en.lobbyIntro = 'Invite teammates to borrow light and reshape the shuttle’s route.';
+roomCopy.zh.onlineState = '已连接 · 光线、装置和回放会同步';
+roomCopy.en.onlineState = 'Connected · Light, devices, and replays sync';
+roomCopy.zh.guide = '联机时各自选择场景和取景位置。光、镜面、发射器和脉冲时刻会全队共享，任何队友都能运行回放。';
+roomCopy.en.guide = 'Each teammate chooses a scene and view. Rays, mirrors, emitters, and pulse times are shared. Any teammate can run the replay.';
+
+Object.assign(copy.zh, {campaignMode:'五关旅程',challengeMode:'布局变奏',newChallenge:'换一张星图',retryLevel:'重试本关',nextLevel:'进入下一关',epochLabel:'当前时空',beforeEpoch:'月蚀前',afterEpoch:'月蚀后',routeLabel:'穿梭艇航道',shortRoute:'近路',longRoute:'绕行',rankingTitle:'星港排行榜',playerName:'玩家昵称',nameNote:'昵称会显示在排行榜上；用网名即可，无需注册。普通单机可以直接练习。',startRanked:'开始五关排位 →',resumeRanked:'继续未完成的排位',exitRanked:'退出排位',rankingRule:'先比已通关关卡数，再比累计通关用时。单人和小队分榜。',soloRank:'单人榜',teamRank:'小队榜',refreshRank:'刷新',rankPosition:'名次',levelsCleared:'已通关',clearTime:'累计用时',rankingFoot:'展示前50名。固定五关计入排名，布局变奏不计分。每关从第一次操作开始计时，重试不清零；通关后到下一关操作前不计时。',rankingEmpty:'还没有通关成绩，来留下第一束光。',rankingLoading:'正在读取排名…',rankedName:'五关排位',filterRule:'每个接收端口都有对应颜色和入射方向。查看本关星图。',guideRules:['在观测舱借光。圆窗一次携带一束光，颜色与方向会跨场景保留。','去月影港旋转镜面并反射，实际反射后箭头才会改变。','在星桥把光放进端口。箭头需要朝向中央，颜色匹配本关要求。','信号传播需要时间。调整脉冲后运行回放，比较抵达时刻。','五关逐步增加双光、跨时空、独立时钟和绕行。星图变奏可重复挑战。'],solvedTitle:'这一段航道，已经改写',solvedBody:'观察这次回放，再继续探索下一段时空。',replayReady:'布置光路与时钟，再运行回放。',meta:'五关时空旅程 · 可重复的星图变奏 · 单人 / 联机'});
+Object.assign(copy.en, {campaignMode:'Five-chapter journey',challengeMode:'Star-chart variations',newChallenge:'New star chart',retryLevel:'Retry this chapter',nextLevel:'Next chapter',epochLabel:'Time layer',beforeEpoch:'Before the eclipse',afterEpoch:'After the eclipse',routeLabel:'Shuttle route',shortRoute:'Short route',longRoute:'Detour',rankingTitle:'Starport leaderboard',playerName:'Nickname',nameNote:'Your nickname appears on the leaderboard. No account needed. Solo practice is available immediately.',startRanked:'Start five-chapter ranking →',resumeRanked:'Resume ranked journey',exitRanked:'Leave ranking',rankingRule:'More chapters first, then shorter cumulative time. Solo and teams have separate boards.',soloRank:'Solo',teamRank:'Teams',refreshRank:'Refresh',rankPosition:'Rank',levelsCleared:'Cleared',clearTime:'Total time',rankingFoot:'Top 50. Only the fixed campaign counts. Timing starts with the first action in each chapter. Retries keep the clock; time between chapters does not count.',rankingEmpty:'No completed chapters yet. Leave the first ray.',rankingLoading:'Loading scores…',rankedName:'Ranked journey',filterRule:'Each intake has a color and direction requirement. Check this chapter’s star chart.',guideRules:['Borrow light at the observatory. The window carries one ray, keeping its color and direction between scenes.','Rotate the mirror at Mirror Dock, then Reflect to change the carried ray.','Place light at Starbridge. Aim toward the center and match the required intake color.','Signals take time to travel. Set the pulses and replay to compare arrival times.','Five chapters add twin lights, time layers, separate clocks, and a detour. Try star-chart variations for more layouts.'],solvedTitle:'This part of the route is rewritten',solvedBody:'Review the replay, then explore another part of spacetime.',replayReady:'Arrange rays and clocks, then run the replay.',meta:'Five chapters · Reproducible variations · Solo / Online'});
+for(const [key,zh,en] of [['level_locked','先完成前面的关卡。','Complete the earlier chapters first.'],['level_unsolved','本关还没有通关。','Finish this chapter first.'],['campaign_complete','五关旅程已经完成！试试星图变奏或排位。','Journey complete! Try variations or a ranked run.'],['challenge_complete','这张星图已完成，可以更换星图。','Chart complete. Try a new chart.'],['wrong_epoch','月蚀前才能借光，月蚀后才能安装。携带的光可以穿越时空。','Borrow before the eclipse and install after it. Carried light travels through time.'],['run_expired','排位已过期，请开始新的挑战。','This ranked run expired. Start a new one.']]){roomCopy.zh.errors[key]=zh;roomCopy.en.errors[key]=en;}
+Object.assign(copy.zh.results,{no_light:'还没有光送出。先布置发射器。',wrong_color:'有一个接收端口的颜色不匹配。',wrong_direction:'有一束光没有朝向中央。去镜面调整方向。',wrong_socket:'光从不匹配的端口发出。比较星图上的端口要求。',missing_signal:'还有一个接收端口没有收到信号。',wrong_epoch:'星光需要从月蚀前带到月蚀后。',too_early:'信号抵达得太早。比较传播延时与经过时刻。',too_late:'信号抵达得太晚。比较传播延时与经过时刻。',closed_exit:'光路已接通，但出口尚未开启。试试另一条航道。',caught:'所有信号与穿梭艇准时会面，航道已改写。'});
+Object.assign(copy.en.results,{no_light:'No ray was emitted. Fill the required emitters.',wrong_color:'An intake received the wrong color.',wrong_direction:'A ray is not pointing toward the center. Reflect it at the mirror.',wrong_socket:'A ray is in the wrong intake. Compare the star chart.',missing_signal:'An intake is still missing its signal.',wrong_epoch:'Carry starlight from before the eclipse into the future.',too_early:'A signal arrived too early. Compare its delay and the crossing time.',too_late:'A signal arrived too late. Compare its delay and the crossing time.',closed_exit:'The optical route works, but the exit is still closed. Try the other route.',caught:'All signals meet their shuttles on time. The route is rewritten.'});
+Object.assign(copy.zh.trace,{wrong_epoch:'信号处于错误的时空',closed_exit:'穿梭艇到达时，出口仍然关闭'});
+Object.assign(copy.en.trace,{wrong_epoch:'The ray is in the wrong time layer',closed_exit:'The exit is still closed when the shuttle arrives'});
+const tutorialSteps = [
+ {zh:'在观测舱点击「月光」，把蓝光借进圆窗。箭头会跟着光一起旅行。',en:'At the Observatory, click Moonlight to borrow blue light. Its arrow travels with the window.',target:'[data-source="moon"]'},
+ {zh:'圆窗记住了蓝光 →。点击「月影港」，带着它去找镜面。',en:'The window remembers blue light →. Click Mirror Dock to carry it to the mirror.',target:'[data-scene="2"]'},
+ {zh:'点击「转动镜面」，直到镜面变成 /，虚线预览朝上 ↑。转镜面还不会改变手中的光。',en:'Rotate the mirror until it shows / and the dashed preview points up ↑. Rotation only changes the preview.',target:'#rotate-mirror'},
+ {zh:'现在点击「反射圆窗中的光」。这一步才会把向上 ↑ 的方向存进圆窗。',en:'Click Reflect the carried ray. This stores the upward ↑ direction in the window.',target:'#reflect-beam'},
+ {zh:'蓝光现在朝上 ↑。点击「星桥」，把这束光带到接收器。',en:'Blue light now points up ↑. Click Starbridge to carry it to the receiver.',target:'[data-scene="1"]'},
+ {zh:'点击「下方」发射器，放入蓝光。向上的光会从下方进入中央接收器。',en:'Click the Below emitter to place the blue ray. It points up into the receiver from below.',target:'[data-socket="below"]'},
+ {zh:'选择脉冲时刻 20:12。光要传播 3 分钟，正好在 20:15 与穿梭艇会面。',en:'Choose pulse time 20:12. The 3-minute delay brings the signal to the shuttle at 20:15.',target:'[data-pulse="12"]'},
+ {zh:'点击「运行回放」，观察光在 20:12 发出、20:15 改变航道。',en:'Click Run replay. Watch light leave at 20:12 and change the route at 20:15.',target:'#run'},
+];
+function rememberTutorial(status) {
+ tutorialSeen = true;
+ try { if(status==='completed'||localStorage.getItem(TUTORIAL_STORAGE_KEY)!=='completed')localStorage.setItem(TUTORIAL_STORAGE_KEY,status); } catch { /* The current session still remembers the choice. */ }
+}
+function renderTutorialWelcome() {
+ const zh=language==='zh';
+ get('tutorial-welcome-title').textContent=zh?'先借一束光，学会改变航道':'Borrow your first ray';
+ get('tutorial-welcome-body').textContent=zh?'用一个独立的第 0 关，亲手练习借光、反射、放光与时钟。每一步都会标出要操作的按钮。':'Try an independent chapter 0: borrow, reflect, place light, and set the clock. Each step highlights the control to use.';
+ get('tutorial-welcome-note').textContent=zh?'教学不计入旅程进度或排行榜。完成或跳过后，会回到你原来的单机状态。':'The lesson does not affect progress or rankings. Finishing or skipping restores your solo game.';
+ get('tutorial-welcome-start').textContent=zh?'开始操作教学':'Start tutorial';
+ get('tutorial-welcome-skip').textContent=zh?'跳过，直接开始':'Skip and play';
+}
+function enterSolo(mode=null) {
+ if(connection||ranked||lobbyBusy)return;
+ if(mode)switchMode(mode);
+ if(!tutorialSeen){renderTutorialWelcome();if(!get('tutorial-welcome').open)get('tutorial-welcome').showModal();}
+ else showGame();
+}
+function closeTutorialWelcome(start) {
+ get('tutorial-welcome').close();
+ if(start)startTutorial();
+ else{rememberTutorial('skipped');showGame();}
+}
+function startTutorial() {
+ if(tutorial||connection||ranked||lobbyBusy)return;
+ saveSoloProgress();
+ tutorial={step:0,saved:structuredClone({puzzle,soloLibrary,sceneIndex,lensViews,hintLevels,replay,soloOutcomeShown,actionNotice})};
+ puzzle=LightPuzzle.initialPuzzle();resetPersonalViews();soloOutcomeShown=false;actionNotice=null;drag=null;stopReplay();
+ if(get('modal').open){modalType=null;get('modal').close();}
+ showGame();get('tutorial-locate').focus({preventScroll:true});
+}
+function endTutorial(status='skipped',destination='game') {
+ if(!tutorial)return;
+ const saved=tutorial.saved;tutorial=null;rememberTutorial(status);
+ ({puzzle,soloLibrary,sceneIndex,lensViews,hintLevels,replay,soloOutcomeShown,actionNotice}=saved);drag=null;
+ if(replay.playing)replay.startedAt=performance.now()-(replay.time-replayBounds().start)*680;
+ if(destination==='home')showHome();else showGame();
+}
+function tutorialAllows(action) {
+ if(!tutorial)return true;
+ const step=tutorial.step;
+ return step===0&&action.type==='capture'&&action.source==='moon'||step===2&&action.type==='rotate'||step===3&&action.type==='reflect'||step===5&&action.type==='place'&&action.socket==='below'||step===6&&action.type==='setPulse'&&action.time===12||step===7&&action.type==='run';
+}
+function advanceTutorial(action) {
+ if(!tutorial)return;
+ if(tutorial.step===2&&puzzle.mirror!==0)return;
+ tutorial.step++;
+ // Campaign metadata belongs only to the saved game, including after a successful training replay.
+ puzzle.completed=0;puzzle.unlocked=0;
+}
+function selectScene(index) {
+ if(tutorial){
+  if(tutorial.step===1&&index===2||tutorial.step===4&&index===1)tutorial.step++;
+  else if(index!==sceneIndex)return;
+ }
+ sceneIndex=index;renderGame();
+}
+function locateTutorialControl() {
+ const target=tutorial&&tutorialSteps[tutorial.step]?document.querySelector(tutorialSteps[tutorial.step].target):get('tutorial-finish');
+ if(!target||target.hidden)return;
+ target.scrollIntoView({block:'center',behavior:reducedMotion?'instant':'smooth'});target.focus({preventScroll:true});
+}
+function renderTutorial() {
+ const zh=language==='zh',blocked=Boolean(tutorial||connection||ranked||lobbyBusy);
+ for(const id of ['open-tutorial','home-tutorial']){
+  get(id).disabled=blocked;
+  get(id).title=connection||ranked?(zh?'返回首页后可进行教学':'Return home to play the tutorial'):'';
+ }
+ get('tutorial-panel').hidden=!tutorial;get('campaign-bar').hidden=!!tutorial;get('campaign-tools').hidden=!!tutorial;
+ document.querySelectorAll('.tutorial-target').forEach(node=>node.classList.remove('tutorial-target'));
+ get('scene-tabs').querySelectorAll('[data-scene]').forEach(button=>button.disabled=false);
+ get('reset-solo').textContent=tutorial?(zh?'重新教学':'Restart lesson'):lang().retryLevel;
+ if(!tutorial)return;
+ const step=tutorial.step,done=step===tutorialSteps.length;
+ get('tutorial-progress').textContent=done?'8 / 8 ✓':(step+1)+' / 8';get('tutorial-meter').value=step;
+ get('case-status').textContent=zh?'教学 · 不计入进度与排名':'Tutorial · Practice only';
+ get('level-title').textContent=zh?'00 · 第一束月光':'00 · Your first moonbeam';
+ get('level-rule').textContent=zh?'跟随上方提示，亲手操作真实装置。可随时跳过；原来的单机进度会保留。':'Follow the guide using the real controls. Skip anytime; your solo game is preserved.';
+ const instruction=done?{zh:replay.playing?'正在回放：看看光与穿梭艇如何在 20:15 会面。':'教学完成！你已学会借光、反射、放光和对准时钟。开始正式旅程，探索更多光路。',en:replay.playing?'Watch the replay: light and shuttle meet at 20:15.':'Tutorial complete! You can borrow, reflect, place, and time light. Begin your journey to explore more routes.'}:tutorialSteps[step];
+ const signature=[language,step,done&&replay.playing].join(':');
+ if(get('tutorial-instruction').dataset.signature!==signature){
+  const secondary=document.createElement('small');secondary.lang=zh?'en':'zh-CN';secondary.textContent=instruction[zh?'en':'zh'];
+  get('tutorial-instruction').replaceChildren(document.createTextNode(instruction[language]),secondary);get('tutorial-instruction').dataset.signature=signature;
+ }
+ get('tutorial-locate').textContent=zh?'定位操作 ↓':'Find control ↓';get('tutorial-locate').hidden=done;
+ get('tutorial-skip').textContent=zh?'跳过教学':'Skip tutorial';get('tutorial-skip').hidden=done;
+ get('tutorial-finish').textContent=zh?'开始正式旅程 →':'Begin your journey →';get('tutorial-finish').hidden=!done;get('tutorial-finish').disabled=replay.playing;
+ get('next-level').hidden=true;get('hint').disabled=true;
+ document.querySelectorAll('[data-source],#rotate-mirror,#reflect-beam,[data-socket],[data-pulse],#run').forEach(button=>button.disabled=true);
+ get('scene-tabs').querySelectorAll('[data-scene]').forEach(button=>button.disabled=true);
+ const target=!done&&document.querySelector(tutorialSteps[step].target);
+ if(target){target.disabled=false;target.classList.add('tutorial-target');}
+ if(done&&!replay.playing)get('tutorial-finish').classList.add('tutorial-target');
+ renderTutorialWelcome();
+}
+function replayBounds(){const c=puzzleConfig();return {start:c.timelineStart,end:c.timelineEnd};}
+function stageChange(action){performPuzzleAction(action);}
+function switchMode(mode){
+ if(!canChangeLevel())return;
+ if(connection){stageChange(mode==='challenge'?{type:'newChallenge',seed:randomSeed()}:{type:'startLevel',index:Math.min(puzzle.levelIndex,puzzle.unlocked)});return;}
+ saveSoloProgress();puzzle=structuredClone(soloLibrary[mode]);resetPersonalViews();soloOutcomeShown=false;actionNotice=null;saveSoloProgress();renderGame();
+}
+function formatDuration(ms){const seconds=Math.floor(Math.max(0,ms)/1000);return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+function playerNickname(){return get('player-name').value.normalize('NFC').trim();}
+function rememberNickname(){const name=playerNickname();try{localStorage.setItem(PROFILE_KEY,name);}catch{} if(!get('room-lobby').hidden)get('room-name').value=name;}
+function rankingSession(){try{return JSON.parse(localStorage.getItem(RANK_SESSION_KEY)||'null');}catch{return null;}}
+function rememberRanked(){try{if(ranked)localStorage.setItem(RANK_SESSION_KEY,JSON.stringify({id:ranked.run.id,token:ranked.token}));}catch{}}
+async function rankRequest(path,body,token){
+ if(!/^https?:$/.test(location.protocol))throw new RoomRequestError('file_origin');
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+ try{const response=await fetch('/api/leaderboard'+path,{method:body?'POST':'GET',headers:{...(token?{Authorization:'Bearer '+token}:{}),...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined,signal:controller.signal,cache:'no-store'});const data=await response.json();if(!response.ok)throw new RoomRequestError(data.error||'service_unavailable',response.status);return data;}catch(error){if(error instanceof RoomRequestError)throw error;throw new RoomRequestError('network');}finally{clearTimeout(timer);}
+}
+async function loadRankings(){
+ get('ranking-status').textContent=lang().rankingLoading;get('ranking-rows').replaceChildren();
+ document.querySelectorAll('[data-rank-kind]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rankKind===rankKind)));
+ try{const data=await rankRequest('?kind='+rankKind);const rows=data.entries.map((entry,index)=>{const row=document.createElement('tr');for(const text of [index+1,entry.name,entry.cleared+' / 5',formatDuration(entry.elapsedMs)]){const td=document.createElement('td');td.textContent=text;row.append(td);}return row;});get('ranking-rows').replaceChildren(...rows);get('ranking-status').textContent=rows.length?'':lang().rankingEmpty;}catch(error){get('ranking-status').textContent=errorText(error.key);}
+}
+function openRankings(){if(!get('ranking-modal').open)get('ranking-modal').showModal();loadRankings();}
+async function startRanked(resume=false){
+ if(connection||tutorial)return;
+ const name=playerNickname();if(!resume&&(!name||[...name].length>24)){get('ranking-notice').textContent=errorText('invalid_name');get('player-name').focus();return;}
+ get('start-ranked').disabled=true;get('resume-ranked').disabled=true;get('ranking-notice').textContent=language==='zh'?'正在连接计时挑战…':'Connecting ranked journey…';
+ try{const saved=resume?rankingSession():null;const data=saved?await rankRequest('/runs/'+saved.id,null,saved.token):await rankRequest('/runs',{name});saveSoloProgress();if(!ranked)savedRankedSolo=structuredClone(puzzle);ranked={token:saved?.token||data.token,run:data.run,busy:false};puzzle=structuredClone(data.run.puzzle);rememberNickname();rememberRanked();resetPersonalViews();soloOutcomeShown=false;get('ranking-notice').textContent='';showGame();}catch(error){get('ranking-notice').textContent=errorText(error.key);}finally{get('start-ranked').disabled=false;get('resume-ranked').disabled=false;}
+}
+function exitRanked(){if(!ranked)return;ranked=null;puzzle=savedRankedSolo||structuredClone(soloLibrary[soloLibrary.activeMode]);savedRankedSolo=null;resetPersonalViews();soloOutcomeShown=false;actionNotice=null;renderGame();}
+async function rankedAction(action){
+ if(ranked.busy)return;const active=ranked;active.busy=true;renderGame();
+ try{let data;try{data=await rankRequest('/runs/'+active.run.id,{action,expectedRevision:active.run.revision},active.token);}catch(error){if(error.status===409){data=await rankRequest('/runs/'+active.run.id,null,active.token);actionNotice='stale_revision';}else throw error;}
+ if(ranked!==active)return;const changed=puzzleIdentity(puzzle)!==puzzleIdentity(data.run.puzzle);active.run=data.run;puzzle=structuredClone(data.run.puzzle);rememberRanked();if(changed){resetPersonalViews();soloOutcomeShown=false;if(get('modal').open)get('modal').close();}if(action.type==='run')beginReplay();else stopReplay();
+ }catch(error){actionNotice=error.key||'network';}finally{if(ranked===active){active.busy=false;renderGame();}}
+}
+function renderRanked(){
+ const stats=ranked?.run||connection?.room?.ranking;get('ranked-bar').hidden=!stats;
+ get('exit-ranked').hidden=!ranked;
+ if(!stats)return;
+ get('ranked-label').textContent=(ranked?lang().rankedName:lang().teamRank)+' · '+stats.name+' · '+stats.cleared+'/5';
+ let stage=stats.stageElapsedMs||0;if(stats.stageStartedAt&&!puzzle.solved)stage=Date.now()-stats.stageStartedAt;
+ get('ranked-time').textContent=(language==='zh'?'本关 ':'Chapter ')+formatDuration(stage)+' · '+lang().clearTime+' '+formatDuration(stats.elapsedMs);
+}
+
+const timeText = value => '20:' + String(Math.floor(value)).padStart(2,'0');
+const directionKey = ray => ray.dx>0?'right':ray.dx<0?'left':ray.dy<0?'up':'down';
+const directionArrow = ray => ({up:'↑',down:'↓',left:'←',right:'→'})[directionKey(ray)];
+const beamText = ray => ray ? lang()[ray.color]+' '+directionArrow(ray) : lang().empty;
+function previewRay(ray) {
+ const pairs=[[-ray.dy,-ray.dx],[ray.dy,ray.dx],[ray.dx,-ray.dy],[-ray.dx,ray.dy]];
+ const [dx,dy]=pairs[puzzle.mirror];
+ return {...ray,dx,dy};
+}
+
+function performPuzzleAction(action) {
+ if(roomControlsLocked())return;actionNotice=null;
+ if(connection){roomAction('puzzle',{action});return;}
+ if(ranked){rankedAction(action);return;}
+ if(tutorial&&action.type==='restart'){tutorial.step=0;puzzle=LightPuzzle.initialPuzzle();resetPersonalViews();soloOutcomeShown=false;stopReplay();renderGame();return;}
+ if(!tutorialAllows(action))return;
+ try{const old=puzzleIdentity(puzzle);puzzle=LightPuzzle.applyPuzzleAction(puzzle,action);if(old!==puzzleIdentity(puzzle)||action.type==='restart'){resetPersonalViews();soloOutcomeShown=false;if(get('modal').open)get('modal').close();}advanceTutorial(action);saveSoloProgress();if(action.type==='run')beginReplay();else stopReplay();}catch(error){actionNotice=error.code||'invalid_action';}renderGame();
+}
+function stopReplay(){replay={playing:false,time:replayBounds().start,startedAt:0};requestDraw();}
+function beginReplay(){if(!puzzle.attempt)return;const b=replayBounds();sceneIndex=1;replay={playing:!reducedMotion,time:reducedMotion?b.end:b.start,startedAt:performance.now()};renderGame();requestDraw();if(reducedMotion)finishReplay();}
+function finishReplay(){replay.playing=false;replay.time=replayBounds().end;renderGame();if(tutorial)return;if(connection)showRoomResult();else if(puzzle.solved&&phase==='game'&&!soloOutcomeShown&&!get('modal').open){soloOutcomeShown=true;showModal('solved');}}
+function renderReplay(){
+ const t=lang(),attempt=puzzle.attempt,log=get('replay-events'),b=replayBounds();get('replay-clock').textContent=timeText(replay.time);get('playback').min=b.start;get('playback').max=b.end;get('playback').value=replay.time;get('playback').disabled=!attempt;get('replay').disabled=!attempt||replay.playing;
+ get('time-ticks').textContent=timeText(b.start)+' — '+timeText(b.end);
+ const events=attempt?.trace||[];
+ if(log.dataset.signature!==JSON.stringify(events)+language){const rows=events.map(event=>{const row=document.createElement('li');row.dataset.at=event.at;const time=document.createElement('time');time.textContent=timeText(event.at);row.append(time,document.createTextNode((event.socket?t[event.socket]+' · ':'')+(t.trace[event.textKey]||event.textKey)));return row;});log.replaceChildren(...rows);log.dataset.signature=JSON.stringify(events)+language;}
+ for(const row of log.children)row.toggleAttribute('data-future',Number(row.dataset.at)>replay.time);
+ let text=!attempt?t.replayReady:replay.playing?t.replayRunning:t.results[attempt.reason]||attempt.reason;
+ if(attempt&&!replay.playing)text+=' '+(attempt.targetResults||[]).map(r=>t[r.socket]+' '+(r.matched?'✓':'×')+' '+timeText(r.signalAt)+' / '+timeText(r.arrival)).join(' · ');
+ get('replay-summary').textContent=text;
+}
+function renderGame(){
+ const t=lang(),config=puzzleConfig(),locked=roomControlsLocked()||puzzle.solved,host=canChangeLevel();
+ get('chapter-title').textContent=[t.observatory,t.starbridge,t.mirrorDock][sceneIndex];get('case-status').textContent=puzzle.solved?t.stateSolved:t.stateEditing;
+ const levelNames=Array.from({length:5},(_,index)=>localize(LightPuzzle.getPuzzleConfig(LightPuzzle.initialPuzzle({levelIndex:index,unlocked:4})).title));
+ const signature=[language,puzzle.mode,puzzle.levelIndex,puzzle.unlocked,puzzle.completed,host,!!ranked].join(':');
+ if(get('campaign-bar').dataset.signature!==signature){get('campaign-bar').replaceChildren(...levelNames.map((name,index)=>{const button=document.createElement('button');button.className='level-button';button.dataset.level=index;button.textContent=String(index+1).padStart(2,'0')+' '+name+(puzzle.completed&(1<<index)?' ✓':'');button.disabled=index>puzzle.unlocked||!host;button.setAttribute('aria-current',puzzle.mode==='campaign'&&puzzle.levelIndex===index?'step':'false');button.setAttribute('aria-pressed',String(puzzle.mode==='campaign'&&puzzle.levelIndex===index));return button;}));get('campaign-bar').dataset.signature=signature;}
+ get('level-title').textContent=(puzzle.mode==='campaign'?String(puzzle.levelIndex+1).padStart(2,'0')+' / 05 · ':'')+localize(config.title);get('level-rule').textContent=localize(config.rule);
+ get('progress-note').replaceChildren();const targets=document.createElement('span');targets.className='target-brief';for(const target of config.targets){const item=document.createElement('span');item.className='target-chip';item.style.color=beamColors[target.color];item.textContent=t[target.socket]+' · '+t[target.color]+' · '+(language==='zh'?'传播 '+target.delay+' 分钟 · 道岔 ':'Delay '+target.delay+' min · Crossing ')+timeText(target.arrival);targets.append(item);}get('progress-note').append(targets);
+ get('home-progress').textContent=(language==='zh'?'旅程进度：已完成 ':'Journey: ')+Array.from({length:5},(_,i)=>Boolean(soloLibrary.campaign.completed&(1<<i))).filter(Boolean).length+'/5';get('resume-ranked').hidden=!rankingSession();
+ for(const id of ['campaign-mode','challenge-mode'])get(id).disabled=!host;get('new-challenge').hidden=puzzle.mode!=='challenge';get('new-challenge').disabled=!host;
+ get('layout-code').textContent=puzzle.mode==='challenge'?(language==='zh'?'星图 #':'Chart #')+puzzle.seed.toString(16).toUpperCase().padStart(8,'0'):'';
+ get('epoch-panel').hidden=!config.requiresEpoch;document.querySelectorAll('[data-epoch]').forEach(button=>{button.disabled=locked;button.setAttribute('aria-pressed',String(button.dataset.epoch===puzzle.epoch));});
+ get('route-panel').hidden=!config.routeChoice;document.querySelectorAll('[data-route]').forEach(button=>{button.disabled=locked;button.setAttribute('aria-pressed',String(button.dataset.route===puzzle.route));button.textContent=t[button.dataset.route==='long'?'longRoute':'shortRoute']+' · '+config.routeDurations?.[button.dataset.route]+' min';});
+ for(const tab of get('scene-tabs').children)tab.setAttribute('aria-pressed',String(Number(tab.dataset.scene)===sceneIndex));get('source-controls').hidden=sceneIndex!==0;get('socket-controls').hidden=sceneIndex!==1;get('mirror-controls').hidden=sceneIndex!==2;
+ get('device-label').textContent=t.deviceLabels[sceneIndex];get('device-title').textContent=t.deviceTitles[sceneIndex];get('device-description').textContent=t.deviceDescriptions[sceneIndex];get('carried-beam').textContent=beamText(puzzle.beam);get('lens-arrow').textContent=puzzle.beam?directionArrow(puzzle.beam):'·';get('lens-token').style.color=puzzle.beam?beamColors[puzzle.beam.color]:'';
+ for(const button of get('source-controls').querySelectorAll('[data-source]'))button.disabled=locked||config.requiresEpoch&&puzzle.epoch==='after';get('rotate-mirror').disabled=locked;get('reflect-beam').disabled=locked||!puzzle.beam;get('mirror-symbol').textContent=mirrorMarks[puzzle.mirror];get('mirror-preview').textContent=puzzle.beam?t.preview(t.directions[directionKey(puzzle.beam)],t.directions[directionKey(previewRay(puzzle.beam))]):t.noBeamPreview;
+ for(const button of get('socket-grid').children){const ray=puzzle.sockets[button.dataset.socket];button.querySelector('[data-socket-status]').textContent=ray?beamText(ray):t.socketEmpty;button.querySelector('[data-socket-action]').textContent=puzzle.beam?(ray?(language==='zh'?'替换此光':'Replace ray'):t.place):ray?t.take:'';button.toggleAttribute('data-filled',!!ray);button.disabled=locked||!puzzle.beam&&!ray;}
+ const pulseSignature=JSON.stringify([language,puzzleIdentity(puzzle),config.targets,config.pulseOptions,config.independent]);
+ if(get('pulse-schedules').dataset.signature!==pulseSignature){const rows=(config.independent?config.targets:[{socket:null}]).map(target=>{const row=document.createElement('div');row.className='pulse-row';if(target.socket){const name=document.createElement('strong');name.textContent=t[target.socket]+' · '+t[target.color];row.append(name);}for(const time of config.pulseOptions){const button=document.createElement('button');button.dataset.pulse=time;if(target.socket)button.dataset.pulseSocket=target.socket;button.textContent=timeText(time);row.append(button);}return row;});get('pulse-schedules').replaceChildren(...rows);get('pulse-schedules').dataset.signature=pulseSignature;}
+ get('pulse-schedules').querySelectorAll('[data-pulse]').forEach(button=>{button.setAttribute('aria-pressed',String(Number(button.dataset.pulse)===(config.independent?puzzle.pulses[button.dataset.pulseSocket]:puzzle.pulse)));button.disabled=locked;});
+ get('timing-rule').textContent=(config.independent?(language==='zh'?'各端口使用独立发射时钟。':'Each intake has its own emission clock.'):(language==='zh'?'所有端口使用同一个发射时刻。':'All intakes share one emission time.'))+(config.exitOpenAt!==null?' '+(language==='zh'?'出口开启：':'Exit opens: ')+timeText(config.exitOpenAt):'');
+ get('run').disabled=roomControlsLocked()||replay.playing;get('run').textContent=puzzle.solved?t.replay:t.run;get('reset-solo').hidden=!!connection;get('reset-solo').disabled=roomControlsLocked();get('next-level').hidden=!puzzle.solved||puzzle.mode!=='campaign'||puzzle.levelIndex===4;get('next-level').disabled=connection?!host:roomControlsLocked();
+ get('lens-size').value=view().r;canvas.setAttribute('aria-label',[t.observatory,t.starbridge,t.mirrorDock][sceneIndex]+'. '+t.dragNote);get('playback').setAttribute('aria-label',t.replayLabel);
+ const n=hintLevels[sceneIndex];get('hint').textContent=n===0?t.hint:n<3?t.nextHint:t.lastHint;get('hint').disabled=n>=3;get('hint-text').textContent=n?t.hints[sceneIndex][n-1]:'';get('action-notice').textContent=actionNotice?errorText(actionNotice):'';renderReplay();renderRoomBar();renderRanked();renderTutorial();requestDraw();
+}
+
+function applyLanguage(){
+ document.documentElement.lang=language==='zh'?'zh-CN':'en';document.title=language==='zh'?'借月改轨 · Borrowed Moon':'Borrowed Moon: Light Across Time';
+ document.querySelectorAll('[data-copy]').forEach(node=>node.textContent=lang()[node.dataset.copy]||'');
+ document.querySelectorAll('[data-room-copy]').forEach(node=>node.textContent=roomText()[node.dataset.roomCopy]||'');
+ document.querySelectorAll('[data-room-placeholder]').forEach(node=>node.placeholder=roomText()[node.dataset.roomPlaceholder]||'');
+ get('lang').textContent=language==='zh'?'English':'中文';get('intro').textContent=lang().intro;
+ renderLobby();renderGame();renderTutorialWelcome();if(get('modal').open)showModal(modalType);
+}
+function showGame(){phase='game';get('home').hidden=true;get('game').hidden=false;renderGame();window.scrollTo(0,0);}
+function showHome(){if(tutorial){endTutorial('skipped','home');return;}phase='home';get('game').hidden=true;get('home').hidden=false;applyLanguage();window.scrollTo(0,0);}
+
+function showModal(type){
+ modalType=type;const t=lang(),modal=get('modal');modal.returnValue='';
+ if(type==='guide')modal.innerHTML='<p class="kicker">'+t.subtitle+'</p><h2 class="serif" id="modal-title">'+t.guideTitle+'</h2><ul>'+t.guideRules.map(rule=>'<li>'+rule+'</li>').join('')+'</ul><p>'+t.guideFoot+'</p><p>'+roomText().guide+'</p><form method="dialog"><button class="button">'+t.close+'</button></form>';
+ else{const controls=!connection||isHost();const next=controls&&puzzle.mode==='campaign'&&puzzle.levelIndex<4?'<button class="button" value="next">'+t.nextLevel+'</button>':'';const retry=controls?'<button class="button ghost" value="reset">'+t.retryLevel+'</button>':'';const final=puzzle.mode==='campaign'&&puzzle.levelIndex===4?(language==='zh'?'五关旅程全部完成！可以挑战排名，或进入布局变奏。':'Five chapters complete! Try ranking or star-chart variations.'):t.solvedBody;modal.innerHTML='<p class="kicker">'+t.solvedTag+'</p><h2 class="serif" id="modal-title">'+t.solvedTitle+'</h2><p>'+final+'</p><form method="dialog" class="actions"><button class="button ghost">'+t.back+'</button>'+retry+next+'</form>';}
+ if(!modal.open)modal.showModal();
+}
+function resetSolo(){performPuzzleAction({type:'restart'});}
+
+function line(c,x1,y1,x2,y2,color,width=5,dashed=false){c.save();c.strokeStyle=color;c.lineWidth=width;c.lineCap='round';if(dashed)c.setLineDash([15,12]);c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();c.restore();}
+function arrow(c,x1,y1,x2,y2,color,dashed=false){line(c,x1,y1,x2,y2,color,6,dashed);c.save();c.translate(x2,y2);c.rotate(Math.atan2(y2-y1,x2-x1));c.fillStyle=color;c.beginPath();c.moveTo(0,0);c.lineTo(-20,-10);c.lineTo(-20,10);c.closePath();c.fill();c.restore();}
+function circle(c,x,y,r,fill,stroke=null,width=2){c.beginPath();c.arc(x,y,r,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
+function label(c,text,x,y,color='#e9e0f5',size=23){c.save();c.font=size+'px "Segoe UI","Microsoft YaHei",sans-serif';c.textAlign='center';const w=c.measureText(text).width+26;c.fillStyle='#10152ce8';c.fillRect(x-w/2,y-size-4,w,size+16);c.fillStyle=color;c.fillText(text,x,y);c.restore();}
+function drawSources(c){
+ const cfg=puzzleConfig(),closed=cfg.requiresEpoch&&puzzle.epoch==='after';
+ if(closed){c.fillStyle='#1512268c';c.fillRect(0,0,world.w,world.h);}
+ for(const source of sources){
+  const {x,y,r,color}=source,ink=beamColors[color],direction=cfg.sourceDirections[source.source];
+  c.save();c.globalAlpha=closed ? .3 : 1;c.shadowBlur=34;c.shadowColor=ink;
+  circle(c,x,y,r+16,'#10172ddd',ink,3);c.fillStyle=ink;
+  if(source.source==='moon'){circle(c,x,y,r*.72,ink);circle(c,x+19,y-16,r*.62,'#14213b');}
+  else if(source.source==='sun'){circle(c,x,y,r*.5,ink);for(let n=0;n<8;n++){const a=n*Math.PI/4;line(c,x+Math.cos(a)*33,y+Math.sin(a)*33,x+Math.cos(a)*48,y+Math.sin(a)*48,ink,4);}}
+  else{c.beginPath();for(let n=0;n<10;n++){const radius=n%2?17:42,a=n*Math.PI/5-Math.PI/2,px=x+Math.cos(a)*radius,py=y+Math.sin(a)*radius;if(!n)c.moveTo(px,py);else c.lineTo(px,py);}c.closePath();c.fill();}
+  c.restore();
+  label(c,lang()[source.source],x,y+r+63,closed?'#8e8aab':ink,24);
+  if(direction&&!closed){const start=r+26;arrow(c,x+direction.dx*start,y+direction.dy*start,x+direction.dx*(start+90),y+direction.dy*(start+90),ink,true);}
+ }
+ if(cfg.requiresEpoch)label(c,language==='zh'?(closed?'月蚀之后 · 光源已经消失':'月蚀之前 · 留住即将消失的光'):(closed?'AFTER THE ECLIPSE · SOURCES ARE DARK':'BEFORE THE ECLIPSE · BORROW THE FADING LIGHT'),768,88,'#d4c5f3',25);
+}
+
+function drawMirror(c){
+ const {x,y}=mirrorPoint;
+ if(puzzle.beam){const ray=puzzle.beam,next=previewRay(ray),color=beamColors[ray.color];arrow(c,x-ray.dx*300,y-ray.dy*300,x-ray.dx*28,y-ray.dy*28,color);arrow(c,x+next.dx*28,y+next.dy*28,x+next.dx*300,y+next.dy*300,color+'be',true);label(c,lang().incoming,x-ray.dx*250-ray.dy*55,y-ray.dy*250+ray.dx*55,color,21);label(c,lang().outgoing,x+next.dx*235-next.dy*55,y+next.dy*235+next.dx*55,color,21);}
+ circle(c,x,y,96,'#171c37ed','#c2a8e9',5);circle(c,x,y,78,'#2b3154','#8f8cae',2);
+ const v=[[-57,57,57,-57],[-57,-57,57,57],[-70,0,70,0],[0,-70,0,70]][puzzle.mirror];line(c,x+v[0],y+v[1],x+v[2],y+v[3],'#ede5ff',12);label(c,lang().mirrorLabel,x,y+137,'#dcc7f5',23);
+}
+function socketPosition(socket){const [dx,dy]=socketOffsets[socket];return {x:switchPoint.x+dx*225,y:switchPoint.y+dy*225};}
+function drawBridge(c){
+ const t=lang(),cfg=puzzleConfig(),center=switchPoint,attempt=puzzle.attempt,bounds=replayBounds();
+ const uniqueTimes=[...new Set(cfg.targets.map(target=>target.arrival))].sort((a,b)=>a-b);
+ const checkpoint=index=>index===0?{x:1100,y:900}:{x:1330,y:665};
+ const pulseAt=socket=>cfg.independent?puzzle.pulses[socket]:puzzle.pulse;
+ const opticalMatch=target=>{const ray=puzzle.sockets[target.socket],offset=socketOffsets[target.socket];return !!ray&&ray.color===target.color&&ray.dx===-offset[0]&&ray.dy===-offset[1]&&(!cfg.requiresEpoch||ray.epoch==='before');};
+ const timedMatch=target=>attempt?.targetResults?.find(result=>result.socket===target.socket)?.matched??(opticalMatch(target)&&pulseAt(target.socket)+target.delay===target.arrival&&(!cfg.requiresEpoch||puzzle.epoch==='after'));
+ const separateShuttles=cfg.independent&&!cfg.routeChoice&&uniqueTimes.length>1;
+ line(c,140,900,1100,900,'#b6a3dc70',8);line(c,1100,900,1460,900,'#bd866d66',8);line(c,1100,900,1330,665,'#a5c6f455',8);
+ if(uniqueTimes.length>1)line(c,1330,665,1460,580,'#a5c6f455',8);
+ if(separateShuttles)line(c,140,665,1330,665,'#b6a3dc70',8);
+ for(const [index,target] of cfg.targets.entries()){
+  const stage=checkpoint(uniqueTimes.indexOf(target.arrival)),lane=index*12-(cfg.targets.length-1)*6;
+  line(c,center.x+70,center.y+lane,stage.x,stage.y-45+lane,beamColors[target.color]+'55',3,true);
+ }
+ for(const socket of Object.keys(socketOffsets)){
+  const p=socketPosition(socket),ray=puzzle.sockets[socket],target=cfg.targets.find(value=>value.socket===socket),pulse=pulseAt(socket),emitted=!attempt||replay.time>=pulse;
+  if(ray){
+   const reaches=p.x+ray.dx*225===center.x&&p.y+ray.dy*225===center.y,length=reaches?173:190;
+   arrow(c,p.x+ray.dx*28,p.y+ray.dy*28,p.x+ray.dx*length,p.y+ray.dy*length,beamColors[ray.color]+(emitted?'e8':'42'));
+   if(reaches&&(!target||!opticalMatch(target))&&emitted){const x=center.x-ray.dx*53,y=center.y-ray.dy*53;line(c,x-13,y-13,x+13,y+13,'#e7b5a6',3);line(c,x+13,y-13,x-13,y+13,'#e7b5a6',3);}
+  }
+  circle(c,p.x,p.y,39,'#141b35ee',ray?beamColors[ray.color]:target?beamColors[target.color]:'#9c93be',3);
+  c.fillStyle=ray?beamColors[ray.color]:'#9c93be';c.font='32px sans-serif';c.textAlign='center';c.fillText(ray?directionArrow(ray):'+',p.x,p.y+11);
+  label(c,t[socket],p.x,p.y+72,'#ded6ed',20);
+  if(target)label(c,t[target.color]+' · '+(language==='zh'?'延时 ':'DELAY ')+target.delay+(language==='zh'?' 分':' MIN'),p.x,p.y+103,beamColors[target.color],17);
+ }
+ // Each receiver side uses its own color filter; opaque sides have no inlet.
+ c.fillStyle='#202b4df2';c.fillRect(center.x-46,center.y-45,92,90);
+ for(const socket of Object.keys(socketOffsets)){
+  const offset=socketOffsets[socket],target=cfg.targets.find(value=>value.socket===socket),px=center.x+offset[0]*53,py=center.y+offset[1]*53,tx=-offset[1]*48,ty=offset[0]*48;
+  line(c,px-tx,py-ty,px+tx,py+ty,target?beamColors[target.color]:'#9f96b9',target?5:14,!!target);
+  if(target)arrow(c,center.x+offset[0]*38,center.y+offset[1]*38,center.x+offset[0]*10,center.y+offset[1]*10,beamColors[target.color]);
+ }
+ label(c,language==='zh'?'分色接收器':'COLOR RECEIVER',center.x,center.y-90,'#d7d2ef',22);
+ for(const [index,time] of uniqueTimes.entries()){
+  const point=checkpoint(index),targets=cfg.targets.filter(target=>target.arrival===time);
+  circle(c,point.x,point.y,33,'#17203be0',targets.every(timedMatch)&&attempt?'#b8e5ff':'#a59abd',3);
+  targets.forEach((target,n)=>circle(c,point.x+(n-(targets.length-1)/2)*18,point.y,6,beamColors[target.color]));
+  label(c,(language==='zh'?'检查点 ':'CHECKPOINT ')+(index+1)+' · '+timeText(time),point.x,index===0?976:615,'#ded0f1',19);
+ }
+ label(c,t.dockLabel,1380,530,'#b9d8ff',20);label(c,t.externalLabel,1380,974,'#e1b79b',20);
+ if(cfg.routeChoice){
+  const exit=checkpoint(uniqueTimes.length-1),open=replay.time>=cfg.exitOpenAt;
+  line(c,exit.x-40,exit.y-40,exit.x+40,exit.y+40,open?'#a6ddff55':'#e9a69c',open?4:12,!open);
+  label(c,(language==='zh'?'出口开启 ':'EXIT OPENS ')+timeText(cfg.exitOpenAt),1360,755,open?'#b9d8ff':'#e4b9b2',19);
+  label(c,(puzzle.route==='long'?(language==='zh'?'长航道 ':'LONG ROUTE '):(language==='zh'?'短航道 ':'SHORT ROUTE '))+cfg.routeDurations[puzzle.route]+(language==='zh'?' 分钟':' MIN'),1230,820,'#d8c2f5',19);
+ }
+ if(attempt){
+  for(const [index,target] of cfg.targets.entries()){
+   if(!opticalMatch(target))continue;
+   const pulse=pulseAt(target.socket),age=replay.time-pulse,stage=checkpoint(uniqueTimes.indexOf(target.arrival)),ink=beamColors[target.color],lane=index*12-(cfg.targets.length-1)*6;
+   if(age>=0&&age<=target.delay){const f=age/target.delay;circle(c,center.x+70+(stage.x-center.x-70)*f,center.y+lane+(stage.y-45-center.y)*f,12,ink,'#f5edff',2);}
+   if(Math.abs(age-target.delay)<.6){c.save();c.shadowColor=ink;c.shadowBlur=30;circle(c,stage.x,stage.y-30+lane,31,ink+'88',ink,3);c.restore();}
+  }
+ }
+ // Relay levels show separate shuttles; detour levels show one ship visiting both gates.
+ const drawVessel=(x,y,failed)=>{c.save();c.translate(x,y);c.fillStyle=failed?'#e6b7a9':'#e8d6c3';c.strokeStyle='#bd9fcf';c.lineWidth=3;c.shadowColor='#bbb5ff';c.shadowBlur=18;c.beginPath();c.moveTo(33,0);c.lineTo(-24,-16);c.lineTo(-11,0);c.lineTo(-24,16);c.closePath();c.fill();c.stroke();c.restore();};
+ if(separateShuttles){
+  for(const [index,time] of uniqueTimes.entries()){
+   const point=checkpoint(index),ready=cfg.targets.filter(target=>target.arrival===time).every(timedMatch),inbound=clamp((replay.time-bounds.start)/Math.max(1,time-bounds.start),0,1),outbound=clamp((replay.time-time)/Math.max(1,bounds.end-time),0,1);
+   let x=140+(point.x-140)*inbound,y=point.y;
+   if(replay.time>=time){x=point.x+(1460-point.x)*outbound;y=point.y-((!attempt||ready)?85:0)*outbound;}
+   drawVessel(x,y,!!attempt&&!ready&&replay.time>=time);
+  }
+  return;
+ }
+ let x=140,y=900,previous={x:140,y:900,time:bounds.start},failed=false;
+ for(const [index,time] of uniqueTimes.entries()){
+  const point=checkpoint(index),fraction=clamp((replay.time-previous.time)/Math.max(1,time-previous.time),0,1);
+  x=previous.x+(point.x-previous.x)*fraction;y=previous.y+(point.y-previous.y)*fraction;
+  if(replay.time<time)break;
+  const ready=cfg.targets.filter(target=>target.arrival===time).every(timedMatch);
+  if(attempt&&!ready){const f=clamp((replay.time-time)/Math.max(1,bounds.end-time),0,1);x=point.x+(1460-point.x)*f;y=point.y+(900-point.y)*f;failed=true;break;}
+  if(attempt&&cfg.routeChoice&&index===uniqueTimes.length-1&&time<cfg.exitOpenAt){x=point.x;y=point.y;failed=true;break;}
+  previous={...point,time};
+  if(index===uniqueTimes.length-1){const destination=uniqueTimes.length>1?{x:1460,y:580}:{x:1330,y:665},f=clamp((replay.time-time)/Math.max(1,bounds.end-time),0,1);x=point.x+(destination.x-point.x)*f;y=point.y+(destination.y-point.y)*f;}
+ }
+ drawVessel(x,y,failed);
+}
+
+function drawCarriedWindow(c){const v=view(),ray=puzzle.beam;c.save();circle(c,v.x,v.y,v.r,'#11182b26','#e3c1a5be',8);circle(c,v.x,v.y,v.r+13,null,'#c6b5ec80',2);if(ray){const n=v.r*.58;c.shadowColor=beamColors[ray.color];c.shadowBlur=20;arrow(c,v.x-ray.dx*n,v.y-ray.dy*n,v.x+ray.dx*n,v.y+ray.dy*n,beamColors[ray.color]);circle(c,v.x,v.y,7,'#f6f1ff');}c.restore();}
+function drawScene(now=performance.now()){
+ framePending=false;if(phase!=='game'||!scenes[sceneIndex].naturalWidth)return;
+ const bounds=replayBounds();
+ if(replay.playing){replay.time=clamp(bounds.start+(now-replay.startedAt)/680,bounds.start,bounds.end);renderReplay();}
+ const c=context;c.setTransform(canvas.width/world.w,0,0,canvas.height/world.h,0,0);c.clearRect(0,0,world.w,world.h);c.drawImage(scenes[sceneIndex],0,0,world.w,world.h);c.fillStyle='#0b102a30';c.fillRect(0,0,world.w,world.h);
+ if(sceneIndex===0)drawSources(c);else if(sceneIndex===1)drawBridge(c);else drawMirror(c);drawCarriedWindow(c);
+ if(replay.playing&&replay.time>=bounds.end)finishReplay();if(replay.playing)requestDraw();
+}
+
+function requestDraw(){if(!framePending){framePending=true;requestAnimationFrame(drawScene);}}
+function paintCover(){const c=get('cover').getContext('2d');c.save();c.beginPath();c.arc(360,360,326,0,Math.PI*2);c.clip();c.drawImage(scenes[2],0,0,scenes[2].naturalWidth,scenes[2].naturalHeight,-125,18,980,654);c.restore();circle(c,360,360,329,null,'#dbb99e',4);circle(c,360,360,345,null,'#bda8e04d',11);arrow(c,283,547,457,374,'#a7d9ff',true);circle(c,276,554,12,'#f2d3b2');}
+function pointInScene(event){const r=canvas.getBoundingClientRect();return {x:(event.clientX-r.left)/r.width*world.w,y:(event.clientY-r.top)/r.height*world.h};}
+function deviceAt(p){
+ if(sceneIndex===0){const source=sources.find(v=>Math.hypot(v.x-p.x,v.y-p.y)<v.r+35);return source?{type:'capture',source:source.source}:null;}
+ if(sceneIndex===2)return Math.hypot(p.x-mirrorPoint.x,p.y-mirrorPoint.y)<112?{type:'rotate'}:null;
+ for(const socket of Object.keys(socketOffsets)){const v=socketPosition(socket);if(Math.hypot(v.x-p.x,v.y-p.y)<57){if(puzzle.beam)return {type:'place',socket};if(puzzle.sockets[socket])return {type:'remove',socket};}}
+ return null;
+}
+function updateView(values){Object.assign(view(),values);view().x=clamp(view().x,170,1366);view().y=clamp(view().y,170,854);get('lens-size').value=view().r;requestDraw();}
+get('modal').addEventListener('close',()=>{
+ const reset=modalType==='solved'&&get('modal').returnValue==='reset';
+ const next=modalType==='solved'&&get('modal').returnValue==='next';
+ modalType=null;
+ get('modal').returnValue='';
+ if(next){stageChange({type:'next'});
+ }else if(reset){
+  if(connection)roomAction('reset');else resetSolo();
+ }else if(connection){
+  showRoomResult();
+ }
+});
+get('home-btn').onclick=()=>{if(ranked)exitRanked();const code=connection?.code;detachRoom();stopReplay();showHome();if(code)openLobby(code,false);};
+get('begin').onclick=()=>enterSolo();get('help').onclick=()=>showModal('guide');get('lang').onclick=()=>{language=language==='zh'?'en':'zh';setSession(LANGUAGE_KEY,language);applyLanguage();};
+get('open-tutorial').onclick=startTutorial;get('home-tutorial').onclick=startTutorial;
+get('tutorial-welcome-start').onclick=()=>closeTutorialWelcome(true);get('tutorial-welcome-skip').onclick=()=>closeTutorialWelcome(false);
+get('tutorial-welcome').addEventListener('cancel',event=>{event.preventDefault();closeTutorialWelcome(false);});
+get('tutorial-locate').onclick=locateTutorialControl;get('tutorial-skip').onclick=()=>endTutorial();get('tutorial-finish').onclick=()=>{if(tutorial?.step===8&&!replay.playing)endTutorial('completed');};
+get('open-lobby').onclick=()=>openLobby();get('room-code').oninput=e=>{e.target.value=e.target.value.toUpperCase();lobbyNotice=null;renderLobby();};get('room-create').onclick=()=>submitRoom('create');get('room-form').onsubmit=e=>{e.preventDefault();submitRoom('join');};get('room-leave').onclick=leaveRoom;
+get('room-reset').onclick=()=>{if(isHost()&&!roomControlsLocked()&&confirm(roomText().resetConfirm))roomAction('reset');};get('copy-invite').onclick=copyRoomInvite;get('invite-link').onclick=e=>e.target.select();
+get('scene-tabs').onclick=e=>{const button=e.target.closest('[data-scene]');if(button)selectScene(Number(button.dataset.scene));};
+get('source-controls').onclick=e=>{const source=e.target.closest('[data-source]')?.dataset.source;if(source)performPuzzleAction({type:'capture',source});};
+get('rotate-mirror').onclick=()=>performPuzzleAction({type:'rotate'});get('reflect-beam').onclick=()=>performPuzzleAction({type:'reflect'});
+get('socket-grid').onclick=e=>{const socket=e.target.closest('[data-socket]')?.dataset.socket;if(socket)performPuzzleAction({type:puzzle.beam?'place':'remove',socket});};
+get('pulse-schedules').onclick=e=>{const button=e.target.closest('[data-pulse]');if(button)performPuzzleAction({type:'setPulse',time:Number(button.dataset.pulse),...(button.dataset.pulseSocket?{socket:button.dataset.pulseSocket}:{})});};
+get('run').onclick=()=>puzzle.solved?beginReplay():performPuzzleAction({type:'run'});get('replay').onclick=beginReplay;get('reset-solo').onclick=resetSolo;
+get('lens-size').oninput=e=>updateView({r:Number(e.target.value)});get('reset-view').onclick=()=>{lensViews[sceneIndex]=freshViews()[sceneIndex];updateView({});};get('hint').onclick=()=>{hintLevels[sceneIndex]=Math.min(3,hintLevels[sceneIndex]+1);renderGame();};
+get('playback').oninput=e=>{replay.playing=false;replay.time=Number(e.target.value);renderGame();};
+canvas.addEventListener('pointerdown',e=>{if(drag)return;e.preventDefault();canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);drag={id:e.pointerId,start:pointInScene(e),x:view().x,y:view().y,target:deviceAt(pointInScene(e)),moved:false};});
+canvas.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const p=pointInScene(e);if(Math.hypot(p.x-drag.start.x,p.y-drag.start.y)>12)drag.moved=true;if(drag.moved)updateView({x:drag.x+p.x-drag.start.x,y:drag.y+p.y-drag.start.y});});
+canvas.addEventListener('pointerup',e=>{if(!drag||drag.id!==e.pointerId)return;const action=!drag.moved?drag.target:null;drag=null;if(action&&!puzzle.solved)performPuzzleAction(action);});
+for(const type of ['pointercancel','lostpointercapture'])canvas.addEventListener(type,()=>{drag=null;});
+canvas.addEventListener('keydown',e=>{const key={ArrowLeft:[-24,0],ArrowRight:[24,0],ArrowUp:[0,-24],ArrowDown:[0,24]}[e.key];if(key){e.preventDefault();updateView({x:view().x+key[0],y:view().y+key[1]});}});
+
+get('campaign-bar').onclick=e=>{const button=e.target.closest('[data-level]');if(button)stageChange({type:'startLevel',index:Number(button.dataset.level)});};
+get('campaign-mode').onclick=()=>switchMode('campaign');get('challenge-mode').onclick=()=>switchMode('challenge');get('new-challenge').onclick=()=>stageChange({type:'newChallenge',seed:randomSeed()});
+get('home-campaign').onclick=()=>enterSolo('campaign');get('home-challenge').onclick=()=>enterSolo('challenge');get('next-level').onclick=()=>stageChange({type:'next'});
+get('epoch-panel').onclick=e=>{const button=e.target.closest('[data-epoch]');if(button)performPuzzleAction({type:'setEpoch',epoch:button.dataset.epoch});};
+get('route-panel').onclick=e=>{const button=e.target.closest('[data-route]');if(button)performPuzzleAction({type:'setRoute',route:button.dataset.route});};
+get('player-name').onchange=rememberNickname;get('open-rankings').onclick=openRankings;get('refresh-rankings').onclick=loadRankings;
+document.querySelectorAll('[data-rank-kind]').forEach(button=>button.onclick=()=>{rankKind=button.dataset.rankKind;loadRankings();});
+get('start-ranked').onclick=()=>startRanked();get('resume-ranked').onclick=()=>startRanked(true);get('exit-ranked').onclick=()=>{exitRanked();showHome();};
+try{get('player-name').value=localStorage.getItem(PROFILE_KEY)||'';}catch{}
+setInterval(()=>{if(phase==='game')renderRanked();},1000);
+
+function showReadyGame(){paintCover();get('loading').hidden=true;showHome();const invited=new URL(location.href).searchParams.get('room');if(invited===null)return;const code=invited.trim().toUpperCase();if(!ROOM_CODE.test(code)){lobbyNotice='invalid_room_code';openLobby('',false);}else{openLobby(code,false);const saved=storedRoom(code);if(saved){get('room-name').value=saved.name||'';submitRoom('join');}}}
+get('loading').textContent=language==='zh'?'正在读取星港记忆…':'Loading starport memories…';
+let loadedScenes=0;for(const [index,image]of scenes.entries()){image.onload=()=>{loadedScenes++;if(loadedScenes===scenes.length)showReadyGame();};image.onerror=()=>{get('loading').textContent=language==='zh'?'场景未能载入，请重新打开完整游戏文件。':'A scene could not load. Reopen the complete game file.';};image.src=ART[index];}
+</script>
+</body>
+</html>

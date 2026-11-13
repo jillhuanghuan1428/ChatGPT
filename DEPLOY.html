@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>借月改轨 · 独立托管说明 / Independent hosting</title>
+<style>
+body{font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif;background:#11162b;color:#e8e1f0;max-width:880px;margin:0 auto;padding:40px 22px 70px}h1,h2{line-height:1.4;color:#e8c29b}h1{font-size:28px}h2{font-size:21px;margin-top:36px}.notice{padding:18px 22px;border:1px solid #9b7e62;border-radius:12px;background:#2d2539}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#0b1020;border:1px solid #685b7b;border-radius:10px;font-size:14px;line-height:1.7}code{color:#a7d5ee}.en{color:#bfb8cd}li{margin:8px 0}a{color:#a7d5ee}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:10px;text-align:left;border-bottom:1px solid #685b7b}footer{margin-top:40px;color:#bfb8cd;font-size:13px}
+</style>
+<h1>借月改轨 · 独立托管说明<br><span class="en">Borrowed Moon · Independent hosting</span></h1>
+<p class="notice">这是一份可部署的源代码包，尚未发布到独立服务器。需要你自己的托管账户或服务器；公网域名和 HTTPS 由所选平台提供或配置。换域名或平台不能保证所有国家、地区和网络都能访问。<br><span class="en">This is a deployment-ready source package, not an already published independent site. You need a hosting account or server, plus a public address and HTTPS. Availability must be tested on the intended networks; no host or domain guarantees access everywhere.</span></p>
+<h2>1. 需要什么 / Requirements</h2>
+<ul>
+<li>支持常驻 Node.js 24 或 Docker 的服务器，以及一块持久磁盘。仅静态网页托管、临时磁盘的无服务器函数不能直接运行这个完整版本。<br><span class="en">Use a host that runs a persistent Node.js 24 process or Docker container, with persistent disk. Static-only hosting and functions with temporary disk cannot run this full package directly.</span></li>
+<li>完整版本包括单机五关、星图变奏、联机房间和公共排行榜。Node.js 内置 SQLite，无需安装 npm 依赖。<br><span class="en">The package includes the solo campaign, chart variations, online rooms and shared rankings. It uses built-in SQLite; no npm dependencies are needed.</span></li>
+<li>独立站使用自己的数据库，现有 ChatGPT Sites 房间和排行榜不会自动转移。<br><span class="en">This deployment has its own database. Existing ChatGPT Sites rooms and rankings are not transferred automatically.</span></li>
+</ul>
+<h2>2. 用 Docker 启动 / Run with Docker</h2>
+<p>在解压后的项目文件夹执行：<br><span class="en">Run these commands in the extracted project folder:</span></p>
+<pre><code>docker build -t borrowed-moon .
+docker volume create borrowed-moon-data
+docker run -d --name borrowed-moon --restart unless-stopped -p 8080:8080 --mount source=borrowed-moon-data,target=/data borrowed-moon</code></pre>
+<p>本机打开 <a href="http://localhost:8080">http://localhost:8080</a>。这是本机地址，不能直接发给其他玩家。对外发布时，将平台入口或 HTTPS 反向代理连接到容器的 8080 端口。<br><span class="en">Open http://localhost:8080 on the host machine. This local address is not a share link. Connect your hosting platform's public HTTPS endpoint or reverse proxy to container port 8080.</span></p>
+<p>在支持 Docker 的平台：使用本项目的 Dockerfile；容器端口设为 <code>8080</code>；持久磁盘挂载到 <code>/data</code>；实例数设为 <code>1</code>；健康检查路径设为 <code>/healthz</code>。<br><span class="en">On a Docker hosting platform: use the supplied Dockerfile, expose port 8080, mount persistent storage at /data, use one instance, and set the health-check path to /healthz.</span></p>
+<h2>3. 直接用 Node.js 启动 / Run with Node.js</h2>
+<pre><code>node --version
+node build.mjs
+node serve.mjs</code></pre>
+<p>Node 版本应为 24 或以上。默认端口 <code>8080</code>，数据库保存在当前目录的 <code>data/borrowed-moon.sqlite</code>。首次启动自动建表，以后启动只执行尚未应用的迁移。<br><span class="en">Use Node.js 24 or newer. The default port is 8080 and the database is data/borrowed-moon.sqlite under the current working directory. Startup applies each database migration once.</span></p>
+<table><thead><tr><th>环境变量 / Variable</th><th>含义 / Meaning</th></tr></thead><tbody>
+<tr><td><code>HOST</code></td><td>监听地址，默认 <code>0.0.0.0</code> / Listen address</td></tr>
+<tr><td><code>PORT</code></td><td>监听端口，默认 <code>8080</code> / Listen port</td></tr>
+<tr><td><code>DB_PATH</code></td><td>SQLite 文件位置；Docker 内为 <code>/data/borrowed-moon.sqlite</code> / Persistent database path</td></tr>
+</tbody></table>
+<h2>4. 保存成绩与更新 / Keep scores and update</h2>
+<ul>
+<li>房间、排位进度和公开成绩都保存在数据库。必须保留持久磁盘；重建容器时继续挂载同一数据卷。<br><span class="en">Rooms, ranked sessions and public scores live in the database. Keep the persistent disk and reattach the same volume when replacing a container.</span></li>
+<li>同一个数据库只运行一个应用实例。不要把 SQLite 文件放在多台服务器之间共享的网络磁盘上。<br><span class="en">Run one application instance per database. Do not share this SQLite file between servers over a network filesystem.</span></li>
+<li>备份前先停止应用，再复制整个数据目录。不要在应用运行时仅复制一个 <code>.sqlite</code> 文件。数据库包含玩家昵称和房间凭证的哈希，应妥善保存。<br><span class="en">Stop the application before copying the complete data directory for backup. Do not copy only the .sqlite file while the app is running. Protect backups: they contain player nicknames and hashed room credentials.</span></li>
+<li>更新时先备份数据，再换源代码、构建并重启。不要编辑已经执行过的迁移文件；增加新的 SQL 迁移。<br><span class="en">Back up before an update, then rebuild and restart with the same database. Keep applied migration files unchanged and add new migrations for future schema changes.</span></li>
+</ul>
+<h2>5. 发给玩家前 / Before sharing</h2>
+<p>用目标玩家实际使用的网络打开公网 HTTPS 地址，创建房间，让另一台设备加入，完成一关并检查排行榜，再重启服务器确认成绩仍在。独立托管完成前，离线 HTML 只能提供本机单人游戏，不能同步公共排名或联机房间。<br><span class="en">Test the public HTTPS URL on your players' actual networks. Create a room, join from a second device, solve a chapter, check the leaderboard, then restart the server and confirm the score persists. The standalone offline HTML supports local solo play; it cannot sync shared rankings or online rooms.</span></p>
+<footer>本说明可直接用浏览器打开。This guide opens directly in a browser.</footer>
+</html>
